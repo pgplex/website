@@ -33,6 +33,44 @@
   </nav>
 
   <section class="hero">
+    <pre class="hero-elephant" aria-hidden="true">
+                    @@@@@@@@@@@@@@                     ..;;:..
+                @@@@@@@@@@@@@@@@@@@@@@             .;@@@@@@@@;.
+             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@..  .;@@@@@@@@@@@@@@@@;
+           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+       @@@@@@@@@ o @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+           @@@@@@@@@@@@@                  @@@@@@@@@@@@@@@@@@@@@@@
+           @@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@   @@@@               @@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@  @@@@@@               @@@@@@@@@@@@@@@@
+             @@@@@@@@@@  @@@@@@@@               @@@@@@@@@@@@
+              @@@@@@@@@ @@@@@@@@@
+              @@@@@@@@@@@@@@@@@@@@@
+               @@@@@@@@@@@@@@@@@@@@@@
+                @@@@@@@@@@@@@@@@@@@@@@@
+                 @@@@@@@@@@@@@@@@@@@@@@@@@
+                   @@@@@@@@@@@@@@@@@@@@@@@@@
+                      @@@@@@@@@@@@@@@@@@@@@@@@
+                         @@@@@@@@@@@@@@@@@@@@@
+                            @@@@@@@@@@@@@@@@@@
+                              @@@@@@@@@@@@@@@@@
+                               @@@@@@@@@@@@@@@@
+                                @@@@@@@@@@@@@@@
+                                 @@@@@@@@@@@@
+                                  @@@@@@@@@
+                                  @@@@@@
+                                  @@@@
+                                   @@
+    </pre>
     <div class="container">
       <h1>Modern Developer Stack<br>for PostgreSQL</h1>
       <p class="hero-sub">
@@ -71,7 +109,7 @@
       <div class="product-grid">
 
         <!-- pgconsole -->
-        <div class="product-card">
+        <a href="https://www.pgconsole.com" target="_blank" class="product-card">
           <div class="card-header">
             <span class="card-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -87,11 +125,11 @@
             <span class="tag">SQL Editor</span>
             <span class="tag">Access Control</span>
           </div>
-          <a href="https://github.com/pgplex/pgconsole" target="_blank" class="btn">Learn More →</a>
-        </div>
+          <span class="btn">Learn More →</span>
+        </a>
 
         <!-- pgtui -->
-        <div class="product-card">
+        <a href="https://github.com/pgplex/pgtui" target="_blank" class="product-card">
           <div class="card-header">
             <span class="card-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -106,11 +144,11 @@
             <span class="tag">Terminal</span>
             <span class="tag">TUI</span>
           </div>
-          <a href="https://github.com/pgplex/pgtui" target="_blank" class="btn">Learn More →</a>
-        </div>
+          <span class="btn">Learn More →</span>
+        </a>
 
         <!-- pgparser -->
-        <div class="product-card">
+        <a href="https://github.com/pgplex/pgparser" target="_blank" class="product-card">
           <div class="card-header">
             <span class="card-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -127,11 +165,11 @@
             <span class="tag">Parser</span>
             <span class="tag">Library</span>
           </div>
-          <a href="https://github.com/pgplex/pgparser" target="_blank" class="btn">Learn More →</a>
-        </div>
+          <span class="btn">Learn More →</span>
+        </a>
 
         <!-- pgschema -->
-        <div class="product-card">
+        <a href="https://github.com/pgplex/pgschema" target="_blank" class="product-card">
           <div class="card-header">
             <span class="card-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -146,18 +184,22 @@
             <span class="tag">Migration</span>
             <span class="tag">Diff</span>
           </div>
-          <a href="https://github.com/pgplex/pgschema" target="_blank" class="btn">Learn More →</a>
-        </div>
+          <span class="btn">Learn More →</span>
+        </a>
 
       </div>
     </div>
   </section>
   <footer class="footer">
     <div class="container footer-compact">
-      <a href="/" class="logo">
-        <img src="logo.png" alt="pgplex" width="16" height="16">
-        <span>pgplex</span>
-      </a>
+      <div class="footer-left">
+        <a href="/" class="logo">
+          <img src="logo.png" alt="pgplex" width="16" height="16">
+          <span>pgplex</span>
+        </a>
+        <span class="footer-sep">by</span>
+        <a href="https://www.bytebase.com" target="_blank" class="footer-bytebase">Bytebase</a>
+      </div>
       <p>&copy; 2026 pgplex. All rights reserved.</p>
     </div>
   </footer>
