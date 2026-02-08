@@ -191,11 +191,13 @@ a {
   flex-direction: column;
   gap: 14px;
   text-align: left;
-  transition: background 0.2s;
+  transition: all 0.15s ease;
   cursor: pointer;
+  box-shadow: 4px 4px 0 var(--border);
 }
 .product-card:hover {
   background: var(--bg-hover);
+  box-shadow: 6px 6px 0 var(--border-bright);
 }
 
 .card-featured {
