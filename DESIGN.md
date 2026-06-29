@@ -36,7 +36,7 @@ palettes:
   quantum-indigo: { light: "#bcc8ff", mid: "#6a70ff", deep: "#5b54ec" }   # pgplex (umbrella)
   cobalt-blue:    { light: "#8fb4ff", mid: "#2f63f0", deep: "#1e44c8" }   # pgconsole
   terminal-green: { light: "#c0f7cf", mid: "#3ad673", deep: "#2fa85d" }   # pgtui
-  holo-violet:    { light: "#d6c8ff", mid: "#8b78ff", deep: "#7a5cf0" }   # pgschema
+  signal-red:     { light: "#ffb1a6", mid: "#f4473c", deep: "#cf2f2a" }   # pgschema
   solar-amber:    { light: "#ffe6b0", mid: "#ffb938", deep: "#e89327" }   # pgparser
 # Product icons are function-specific glyphs (NOT the pinwheel) drawn in the
 # shared gradient style: one userSpaceOnUse gradient (0,0)->(120,120) over a
@@ -44,7 +44,7 @@ palettes:
 product-icons:
   pgconsole: { glyph: "app window (title dots)", palette: "{palettes.cobalt-blue}", files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
   pgtui:     { glyph: "terminal prompt >_", palette: "{palettes.terminal-green}", files: ["public/icons/pgtui.svg", "public/icons/pgtui.png"] }
-  pgschema:  { glyph: "table / grid", palette: "{palettes.holo-violet}",     files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
+  pgschema:  { glyph: "table / grid", palette: "{palettes.signal-red}",      files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
   pgparser:  { glyph: "syntax tree / AST", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
 components:
   logo:
@@ -180,7 +180,7 @@ treatment, not a shared shape:
 |:--|:--|:--|:--|
 | `pgconsole` | SQL GUI editor | app window (title dots) | `cobalt-blue` |
 | `pgtui` | TUI SQL client | terminal prompt `>_` | `terminal-green` |
-| `pgschema` | declarative schema (Terraform-for-pg) | table / grid (header + 2×2 cells) | `holo-violet` |
+| `pgschema` | declarative schema (Terraform-for-pg) | table / grid (header + 2×2 cells) | `signal-red` |
 | `pgparser` | Postgres parser library | syntax tree / AST (root + 3 children) | `solar-amber` |
 
 Sources live in `public/icons/<product>.{svg,png}`. To add a product: pick or
