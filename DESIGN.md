@@ -39,15 +39,13 @@ palettes:
   signal-red:     { light: "#ffb1a6", mid: "#f4473c", deep: "#cf2f2a" }   # pgschema
   solar-amber:    { light: "#ffe6b0", mid: "#ffb938", deep: "#e89327" }   # pgparser
 # Product icons are function-specific glyphs (NOT the pinwheel) drawn in the
-# Product icons share the pgplex rounded-diamond silhouette (product-shape),
-# filled with one userSpaceOnUse gradient (0,0)->(120,120) on a 120x120 canvas,
-# transparent background. They differ by colour + a simple knockout glyph.
-product-shape: "M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z"
+# shared gradient style: one userSpaceOnUse gradient (0,0)->(120,120) over a
+# 120x120 canvas, transparent background, transparent negative space.
 product-icons:
-  pgconsole: { glyph: "window (knockout)", palette: "{palettes.cobalt-blue}", files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
-  pgtui:     { glyph: "terminal prompt >_ (knockout)", palette: "{palettes.terminal-green}", files: ["public/icons/pgtui.svg", "public/icons/pgtui.png"] }
-  pgschema:  { glyph: "2x2 grid (knockout)", palette: "{palettes.signal-red}", files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
-  pgparser:  { glyph: "syntax tree / AST (knockout)", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
+  pgconsole: { glyph: "app window (title dots)", palette: "{palettes.cobalt-blue}", files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
+  pgtui:     { glyph: "terminal prompt >_", palette: "{palettes.terminal-green}", files: ["public/icons/pgtui.svg", "public/icons/pgtui.png"] }
+  pgschema:  { glyph: "table / grid", palette: "{palettes.signal-red}",      files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
+  pgparser:  { glyph: "syntax tree / AST", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
 components:
   logo:
     format: svg
@@ -64,11 +62,10 @@ tiers:
 
 1. **`pgplex` umbrella mark** — the aperture/pinwheel. A new tint of *this* mark
    is **a colour swap, not a redraw** (change the three gradient stops only).
-2. **Product icons** (pgconsole, pgtui, pgschema, pgparser) — the **same
-   rounded-diamond silhouette** as the logo, in a per-product base colour, with a
-   simple function glyph knocked out of the centre. Same family as the logo, one
-   step simpler (a solid diamond instead of the four-blade pinwheel). See
-   [Product Icons](#product-icons).
+2. **Product icons** (pgconsole, pgtui, pgschema, pgparser) — **function-specific
+   glyphs**, each its own shape. They are tied into one set by a **shared
+   colour/shade treatment** (the same `light → mid → deep` gradient ramp), *not*
+   by a shared silhouette. See [Product Icons](#product-icons).
 
 ## Overview
 
@@ -164,36 +161,34 @@ as the favicon + apple-touch icon in `src/app/layout.tsx`.
 
 ## Product Icons
 
-Each product icon is the **same rounded-diamond silhouette as the logo**
-(`product-shape`), in the product's colour, with a simple function glyph knocked
-out of the centre. They're one step simpler than the logo — a solid diamond, not
-the four-blade pinwheel — so the suite reads as one family and the umbrella mark
-still stands apart.
+The product tools do **not** reuse the pinwheel or any shared background shape —
+each is a function-specific glyph so it's recognisable on its own. What makes the
+set read as a family is the **shared colour/shade treatment**: every icon is the
+same `light → mid → deep` gradient ramp, just in a different hue. Cohesion comes
+from the shading, not the silhouette.
 
-- **Silhouette** — the shared `product-shape` path (the logo's outer diamond:
-  pointed N/E/S/W corners, gently convex edges), identical for all four.
 - **Canvas & export** — same `120 × 120` viewBox, transparent background,
   exported to 512px PNG (same command as the logo).
 - **Fill** — a single gradient per icon, `light → mid → deep` along
-  `(0,0) → (120,120)` with `gradientUnits="userSpaceOnUse"` so the whole diamond
-  shares one diagonal prism sheen.
-- **Glyph** — one simple mark knocked out of the centre via a `mask` (white
-  diamond, black glyph), the same light/dark-adaptive trick as the logo's centre
-  square. Keep glyphs compact (within ~`x40–80, y45–78`) so they sit inside the
-  diamond.
+  `(0,0) → (120,120)` with `gradientUnits="userSpaceOnUse"` so the whole glyph
+  shares one diagonal prism sheen (unlike the logo's per-blade gradients).
+- **Negative space** — internal detail is transparent (knockout via `mask`),
+  the same light/dark-adaptive trick as the logo's centre square.
 - **Colour** — each product owns one row of `palettes` (deep stop kept light
   enough to read on dark, lightness ≳ 35%).
+- **Weight** — glyphs are sized to similar visual mass (~88px of content,
+  ~16px margin) so the set looks even side by side.
 
 | Product | Meaning | Glyph | Palette |
 |:--|:--|:--|:--|
-| `pgconsole` | SQL GUI editor | window (title bar + body) | `cobalt-blue` |
+| `pgconsole` | SQL GUI editor | app window (title dots) | `cobalt-blue` |
 | `pgtui` | TUI SQL client | terminal prompt `>_` | `terminal-green` |
-| `pgschema` | declarative schema (Terraform-for-pg) | 2×2 grid | `signal-red` |
-| `pgparser` | Postgres parser library | syntax tree (root + 2 children) | `solar-amber` |
+| `pgschema` | declarative schema (Terraform-for-pg) | table / grid (header + 2×2 cells) | `signal-red` |
+| `pgparser` | Postgres parser library | syntax tree / AST (root + 3 children) | `solar-amber` |
 
-Sources live in `public/icons/<product>.{svg,png}`. To add a product: pick or add
-a `palettes` row, fill the `product-shape` diamond with its gradient, knock out a
-simple centred glyph with a `mask`, and export the PNG.
+Sources live in `public/icons/<product>.{svg,png}`. To add a product: pick or
+add a `palettes` row, draw a bold gradient glyph on the shared canvas, knock out
+detail with a `mask`, and export the PNG.
 
 ## Do's and Don'ts
 
@@ -205,11 +200,10 @@ simple centred glyph with a `mask`, and export the PNG.
 - **Do** re-export the 512px PNG after any colour change.
 - **Don't** fill, recolour, or resize the centre square.
 - **Don't** change the *umbrella mark's* geometry when retinting it — only swap
-  the three gradient stops.
-- **Do** reuse the shared `product-shape` diamond for every product icon — only
-  the colour and the small centre glyph change. Don't invent a new silhouette.
+  the three gradient stops. (Product icons are the exception: they are their own
+  glyphs by design — see [Product Icons](#product-icons).)
 - **Do**, for product icons, use one `userSpaceOnUse` gradient across the whole
-  diamond and keep the centre glyph simple and compact.
+  glyph and keep margins/visual weight consistent across the set.
 - **Don't** flatten the gradient to a single colour; the per-blade gradient is
   what creates the prism/pinwheel depth.
 - **Don't** use a near-black deep stop (e.g. `#15123f`) — it vanishes on dark.

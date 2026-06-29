@@ -3,14 +3,11 @@
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#ffe6b0"/><stop offset="0.5" stop-color="#ffb938"/><stop offset="1" stop-color="#e89327"/>
     </linearGradient>
-    <!-- shared pgplex diamond silhouette; glyph = syntax tree / AST (knockout) -->
-    <mask id="m">
-      <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="#fff"/>
-      <path d="M60 45 L46 73 M60 45 L74 73" stroke="#000" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="60" cy="45" r="6.5" fill="#000"/>
-      <circle cx="46" cy="73" r="6.5" fill="#000"/>
-      <circle cx="74" cy="73" r="6.5" fill="#000"/>
-    </mask>
   </defs>
-  <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="url(#g)" mask="url(#m)"/>
+  <!-- parser: syntax tree / AST (root + three children) -->
+  <path d="M60 28 L30 92 M60 28 L60 92 M60 28 L90 92" stroke="url(#g)" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <circle cx="60" cy="28" r="12" fill="url(#g)"/>
+  <circle cx="30" cy="92" r="11" fill="url(#g)"/>
+  <circle cx="60" cy="92" r="11" fill="url(#g)"/>
+  <circle cx="90" cy="92" r="11" fill="url(#g)"/>
 </svg>

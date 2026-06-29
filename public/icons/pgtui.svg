@@ -3,12 +3,8 @@
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#c0f7cf"/><stop offset="0.5" stop-color="#3ad673"/><stop offset="1" stop-color="#2fa85d"/>
     </linearGradient>
-    <!-- shared pgplex diamond silhouette; glyph = terminal prompt >_ (knockout) -->
-    <mask id="m">
-      <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="#fff"/>
-      <path d="M44 48 L60 60 L44 72 L44 65 L51 60 L44 55 Z" fill="#000"/>
-      <rect x="62" y="69" width="16" height="6" rx="3" fill="#000"/>
-    </mask>
   </defs>
-  <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="url(#g)" mask="url(#m)"/>
+  <!-- terminal prompt: chevron + cursor -->
+  <path d="M26 30 L64 60 L26 90 L26 73 L43 60 L26 47 Z" fill="url(#g)"/>
+  <rect x="60" y="80" width="34" height="10" rx="5" fill="url(#g)"/>
 </svg>

@@ -3,14 +3,11 @@
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#ffb1a6"/><stop offset="0.5" stop-color="#f4473c"/><stop offset="1" stop-color="#cf2f2a"/>
     </linearGradient>
-    <!-- shared pgplex diamond silhouette; glyph = 2x2 grid (knockout) -->
-    <mask id="m">
-      <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="#fff"/>
-      <rect x="44" y="46" width="12" height="12" rx="2.5" fill="#000"/>
-      <rect x="64" y="46" width="12" height="12" rx="2.5" fill="#000"/>
-      <rect x="44" y="66" width="12" height="12" rx="2.5" fill="#000"/>
-      <rect x="64" y="66" width="12" height="12" rx="2.5" fill="#000"/>
-    </mask>
   </defs>
-  <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="url(#g)" mask="url(#m)"/>
+  <!-- declarative schema: a table (header row + 2x2 cells) -->
+  <rect x="22" y="28" width="76" height="16" rx="4" fill="url(#g)"/>
+  <rect x="22" y="50" width="36" height="16" rx="4" fill="url(#g)"/>
+  <rect x="62" y="50" width="36" height="16" rx="4" fill="url(#g)"/>
+  <rect x="22" y="72" width="36" height="16" rx="4" fill="url(#g)"/>
+  <rect x="62" y="72" width="36" height="16" rx="4" fill="url(#g)"/>
 </svg>
