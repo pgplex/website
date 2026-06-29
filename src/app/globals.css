@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Fonts — variables injected by next/font in layout.tsx */
+  --font-mono: var(--font-geist-mono), 'SF Mono', 'Fira Code', 'JetBrains Mono',
+    Menlo, Consolas, 'Liberation Mono', monospace;
+  --font-display: var(--font-instrument-serif), serif;
+
+  /* Palette (ported from the original pgplex design tokens) */
+  --color-bg: #fafafa;
+  --color-card: #ffffff;
+  --color-border: #e0e0e0;
+  --color-border-bright: #cccccc;
+  --color-ink: #1a1a1a;
+  --color-ink-dim: #6b6b6b;
+  --color-accent: #008cba;
+
+  /* Layout */
+  --container-page: 1080px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-mono);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
