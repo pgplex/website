@@ -18,7 +18,11 @@ export const metadata: Metadata = {
   description:
     "We're building a modern Postgres toolchain for everyone — from individual developers to the enterprise.",
   icons: {
-    icon: '/logo.png',
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/logo.png', type: 'image/png' },
+    ],
+    apple: '/logo.png',
   },
 }
 

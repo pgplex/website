@@ -1,0 +1,17 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pgplexBlade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bcc8ff"/>
+      <stop offset="0.5" stop-color="#6a70ff"/>
+      <stop offset="1" stop-color="#5b54ec"/>
+    </linearGradient>
+    <!-- One blade: straight inner edge (a square side) + two cut edges that are
+         exact 90deg rotations of each other, so the four copies tile seamlessly
+         and leave an exact empty square in the centre. -->
+    <path id="pgplexBladePath" d="M46 46 L74 46 C84 50 100 58 114 60 Q95 26 60 6 C58 20 50 36 46 46 Z"/>
+  </defs>
+  <use href="#pgplexBladePath" fill="url(#pgplexBlade)"/>
+  <use href="#pgplexBladePath" fill="url(#pgplexBlade)" transform="rotate(90 60 60)"/>
+  <use href="#pgplexBladePath" fill="url(#pgplexBlade)" transform="rotate(180 60 60)"/>
+  <use href="#pgplexBladePath" fill="url(#pgplexBlade)" transform="rotate(270 60 60)"/>
+</svg>
