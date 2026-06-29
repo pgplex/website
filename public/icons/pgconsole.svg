@@ -1,16 +1,13 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#b6f7ff"/><stop offset="0.5" stop-color="#2dd4e8"/><stop offset="1" stop-color="#2f9fc0"/>
+      <stop offset="0" stop-color="#8fb4ff"/><stop offset="0.5" stop-color="#2f63f0"/><stop offset="1" stop-color="#1e44c8"/>
     </linearGradient>
-    <!-- window with transparent (knockout) controls + content lines -->
+    <!-- app window with transparent (knockout) title dots -->
     <mask id="win">
-      <rect x="16" y="24" width="88" height="72" rx="12" fill="#fff"/>
-      <circle cx="28" cy="37" r="3" fill="#000"/><circle cx="38" cy="37" r="3" fill="#000"/><circle cx="48" cy="37" r="3" fill="#000"/>
-      <rect x="27" y="54" width="50" height="5" rx="2.5" fill="#000"/>
-      <rect x="27" y="67" width="38" height="5" rx="2.5" fill="#000"/>
-      <rect x="27" y="80" width="44" height="5" rx="2.5" fill="#000"/>
+      <rect x="16" y="26" width="88" height="68" rx="12" fill="#fff"/>
+      <circle cx="29" cy="39" r="3.2" fill="#000"/><circle cx="40" cy="39" r="3.2" fill="#000"/><circle cx="51" cy="39" r="3.2" fill="#000"/>
     </mask>
   </defs>
-  <rect x="16" y="24" width="88" height="72" rx="12" fill="url(#g)" mask="url(#win)"/>
+  <rect x="16" y="26" width="88" height="68" rx="12" fill="url(#g)" mask="url(#win)"/>
 </svg>

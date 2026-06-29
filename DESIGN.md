@@ -34,7 +34,7 @@ logo:
 # tint; deep = darker shade with enough lightness to survive a dark background.
 palettes:
   quantum-indigo: { light: "#bcc8ff", mid: "#6a70ff", deep: "#5b54ec" }   # pgplex (umbrella)
-  aqua-cyan:      { light: "#b6f7ff", mid: "#2dd4e8", deep: "#2f9fc0" }   # pgconsole
+  cobalt-blue:    { light: "#8fb4ff", mid: "#2f63f0", deep: "#1e44c8" }   # pgconsole
   terminal-green: { light: "#c0f7cf", mid: "#3ad673", deep: "#2fa85d" }   # pgtui
   holo-violet:    { light: "#d6c8ff", mid: "#8b78ff", deep: "#7a5cf0" }   # pgschema
   solar-amber:    { light: "#ffe6b0", mid: "#ffb938", deep: "#e89327" }   # pgparser
@@ -42,7 +42,7 @@ palettes:
 # shared gradient style: one userSpaceOnUse gradient (0,0)->(120,120) over a
 # 120x120 canvas, transparent background, transparent negative space.
 product-icons:
-  pgconsole: { glyph: "editor window", palette: "{palettes.aqua-cyan}",      files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
+  pgconsole: { glyph: "app window (title dots)", palette: "{palettes.cobalt-blue}", files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
   pgtui:     { glyph: "terminal prompt >_", palette: "{palettes.terminal-green}", files: ["public/icons/pgtui.svg", "public/icons/pgtui.png"] }
   pgschema:  { glyph: "table / grid", palette: "{palettes.holo-violet}",     files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
   pgparser:  { glyph: "syntax tree / AST", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
@@ -178,7 +178,7 @@ treatment, not a shared shape:
 
 | Product | Meaning | Glyph | Palette |
 |:--|:--|:--|:--|
-| `pgconsole` | SQL GUI editor | editor window (title dots + content lines) | `aqua-cyan` |
+| `pgconsole` | SQL GUI editor | app window (title dots) | `cobalt-blue` |
 | `pgtui` | TUI SQL client | terminal prompt `>_` | `terminal-green` |
 | `pgschema` | declarative schema (Terraform-for-pg) | table / grid (header + 2×2 cells) | `holo-violet` |
 | `pgparser` | Postgres parser library | syntax tree / AST (root + 3 children) | `solar-amber` |
