@@ -12,12 +12,7 @@ const products: Product[] = [
     description:
       'Web-based Postgres development workspace with guardrails. Query, explore, and manage your databases safely from the browser.',
     tags: ['Web UI', 'SQL Editor', 'Access Control'],
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <path d="M8 21h8M12 17v4M6 8l4 3-4 3M12 16h4" />
-      </svg>
-    ),
+    icon: '/icons/pgconsole.svg',
   },
   {
     name: 'pgtui',
@@ -25,12 +20,7 @@ const products: Product[] = [
     description:
       'A beautiful terminal UI for Postgres. Navigate schemas, run queries, and inspect data — all without leaving your terminal.',
     tags: ['Terminal', 'TUI'],
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="4 17 10 11 4 5" />
-        <line x1="12" y1="19" x2="20" y2="19" />
-      </svg>
-    ),
+    icon: '/icons/pgtui.svg',
   },
   {
     name: 'pgparser',
@@ -38,13 +28,7 @@ const products: Product[] = [
     description:
       'Thread-safe, Golang-native Postgres parser. Parse, analyze, and transform SQL with zero CGo dependencies.',
     tags: ['Go', 'Parser', 'Library'],
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-        <line x1="14" y1="4" x2="10" y2="20" />
-      </svg>
-    ),
+    icon: '/icons/pgparser.svg',
   },
   {
     name: 'pgschema',
@@ -52,11 +36,7 @@ const products: Product[] = [
     description:
       'Schema management for Postgres. Diff, migrate, and version your database schema with confidence.',
     tags: ['Schema', 'Migration', 'Diff'],
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 17.5a3.5 3.5 0 1 0 7 0 3.5 3.5 0 1 0-7 0" />
-      </svg>
-    ),
+    icon: '/icons/pgschema.svg',
   },
 ]
 
