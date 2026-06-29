@@ -42,10 +42,10 @@ palettes:
 # shared gradient style: one userSpaceOnUse gradient (0,0)->(120,120) over a
 # 120x120 canvas, transparent background, transparent negative space.
 product-icons:
-  pgconsole: { glyph: "app window (title dots)", palette: "{palettes.cobalt-blue}", files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
+  pgconsole: { glyph: "window (header bar)", palette: "{palettes.cobalt-blue}", files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
   pgtui:     { glyph: "terminal prompt >_", palette: "{palettes.terminal-green}", files: ["public/icons/pgtui.svg", "public/icons/pgtui.png"] }
-  pgschema:  { glyph: "table / grid", palette: "{palettes.signal-red}",      files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
-  pgparser:  { glyph: "syntax tree / AST", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
+  pgschema:  { glyph: "2x2 grid", palette: "{palettes.signal-red}",          files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
+  pgparser:  { glyph: "syntax tree (root + 2)", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
 components:
   logo:
     format: svg
@@ -181,10 +181,10 @@ from the shading, not the silhouette.
 
 | Product | Meaning | Glyph | Palette |
 |:--|:--|:--|:--|
-| `pgconsole` | SQL GUI editor | app window (title dots) | `cobalt-blue` |
+| `pgconsole` | SQL GUI editor | window (header bar) | `cobalt-blue` |
 | `pgtui` | TUI SQL client | terminal prompt `>_` | `terminal-green` |
-| `pgschema` | declarative schema (Terraform-for-pg) | table / grid (header + 2×2 cells) | `signal-red` |
-| `pgparser` | Postgres parser library | syntax tree / AST (root + 3 children) | `solar-amber` |
+| `pgschema` | declarative schema (Terraform-for-pg) | 2×2 grid | `signal-red` |
+| `pgparser` | Postgres parser library | syntax tree (root + 2 children) | `solar-amber` |
 
 Sources live in `public/icons/<product>.{svg,png}`. To add a product: pick or
 add a `palettes` row, draw a bold gradient glyph on the shared canvas, knock out

@@ -3,11 +3,11 @@
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#8fb4ff"/><stop offset="0.5" stop-color="#2f63f0"/><stop offset="1" stop-color="#1e44c8"/>
     </linearGradient>
-    <!-- app window with transparent (knockout) title dots -->
+    <!-- window with a single header bar (knockout) -->
     <mask id="win">
-      <rect x="16" y="26" width="88" height="68" rx="12" fill="#fff"/>
-      <circle cx="29" cy="39" r="3.2" fill="#000"/><circle cx="40" cy="39" r="3.2" fill="#000"/><circle cx="51" cy="39" r="3.2" fill="#000"/>
+      <rect x="16" y="24" width="88" height="72" rx="12" fill="#fff"/>
+      <rect x="16" y="43" width="88" height="4" fill="#000"/>
     </mask>
   </defs>
-  <rect x="16" y="26" width="88" height="68" rx="12" fill="url(#g)" mask="url(#win)"/>
+  <rect x="16" y="24" width="88" height="72" rx="12" fill="url(#g)" mask="url(#win)"/>
 </svg>

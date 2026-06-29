@@ -4,10 +4,9 @@
       <stop offset="0" stop-color="#ffb1a6"/><stop offset="0.5" stop-color="#f4473c"/><stop offset="1" stop-color="#cf2f2a"/>
     </linearGradient>
   </defs>
-  <!-- declarative schema: a table (header row + 2x2 cells) -->
-  <rect x="22" y="28" width="76" height="16" rx="4" fill="url(#g)"/>
-  <rect x="22" y="50" width="36" height="16" rx="4" fill="url(#g)"/>
-  <rect x="62" y="50" width="36" height="16" rx="4" fill="url(#g)"/>
-  <rect x="22" y="72" width="36" height="16" rx="4" fill="url(#g)"/>
-  <rect x="62" y="72" width="36" height="16" rx="4" fill="url(#g)"/>
+  <!-- declarative schema: a 2x2 grid of cells -->
+  <rect x="26" y="26" width="30" height="30" rx="5" fill="url(#g)"/>
+  <rect x="64" y="26" width="30" height="30" rx="5" fill="url(#g)"/>
+  <rect x="26" y="64" width="30" height="30" rx="5" fill="url(#g)"/>
+  <rect x="64" y="64" width="30" height="30" rx="5" fill="url(#g)"/>
 </svg>
