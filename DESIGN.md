@@ -33,12 +33,19 @@ logo:
 # Curated base palettes for the product family. mid = vivid base; light = pale
 # tint; deep = darker shade with enough lightness to survive a dark background.
 palettes:
-  quantum-indigo: { light: "#bcc8ff", mid: "#6a70ff", deep: "#5b54ec" }   # pgplex
-  plasma-blue:    { light: "#7db9ff", mid: "#2b6cff", deep: "#1e40af" }
-  tron-cyan:      { light: "#b6fbff", mid: "#16c8e0", deep: "#0e7490" }
-  holo-violet:    { light: "#c4b5fd", mid: "#7c5cff", deep: "#5b21b6" }
-  nebula-magenta: { light: "#f5b6e6", mid: "#c13aff", deep: "#6b21a8" }
-  ion-teal:       { light: "#7dffd4", mid: "#18c39a", deep: "#0f766e" }
+  quantum-indigo: { light: "#bcc8ff", mid: "#6a70ff", deep: "#5b54ec" }   # pgplex (umbrella)
+  aqua-cyan:      { light: "#b6f7ff", mid: "#2dd4e8", deep: "#2f9fc0" }   # pgconsole
+  terminal-green: { light: "#c0f7cf", mid: "#3ad673", deep: "#2fa85d" }   # pgtui
+  holo-violet:    { light: "#d6c8ff", mid: "#8b78ff", deep: "#7a5cf0" }   # pgschema
+  solar-amber:    { light: "#ffe6b0", mid: "#ffb938", deep: "#e89327" }   # pgparser
+# Product icons are function-specific glyphs (NOT the pinwheel) drawn in the
+# shared gradient style: one userSpaceOnUse gradient (0,0)->(120,120) over a
+# 120x120 canvas, transparent background, transparent negative space.
+product-icons:
+  pgconsole: { glyph: "editor window", palette: "{palettes.aqua-cyan}",      files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
+  pgtui:     { glyph: "terminal prompt >_", palette: "{palettes.terminal-green}", files: ["public/icons/pgtui.svg", "public/icons/pgtui.png"] }
+  pgschema:  { glyph: "table / grid", palette: "{palettes.holo-violet}",     files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
+  pgparser:  { glyph: "syntax tree / AST", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
 components:
   logo:
     format: svg
@@ -49,10 +56,15 @@ components:
 
 # pgplex Logo System
 
-Reusable spec for the pgplex brand mark and every sibling product mark
-(pgconsole, pgtui, pgschema, pgparser, …). Tokens give exact geometry and
-colour; the prose explains the invariants so a new logo is **a colour swap, not
-a redraw**.
+Reusable spec for the pgplex brand mark and the sibling product icons. Tokens
+give exact geometry and colour; the prose explains the invariants. There are two
+tiers:
+
+1. **`pgplex` umbrella mark** — the aperture/pinwheel. A new tint of *this* mark
+   is **a colour swap, not a redraw** (change the three gradient stops only).
+2. **Product icons** (pgconsole, pgtui, pgschema, pgparser) — **function-specific
+   glyphs** that share the gradient style and a per-product base colour but each
+   has its own shape. See [Product Icons](#product-icons).
 
 ## Overview
 
@@ -146,6 +158,35 @@ qlmanage -t -s 512 -o . _exp.svg && mv _exp.svg.png logo.png && rm _exp.svg
 `logo.svg` is consumed directly by `src/components/logo.tsx` (nav) and referenced
 as the favicon + apple-touch icon in `src/app/layout.tsx`.
 
+## Product Icons
+
+The product tools do **not** reuse the pinwheel — each is a function-specific
+glyph so it's recognisable on its own. They stay a family through a shared
+treatment, not a shared shape:
+
+- **Canvas & export** — same `120 × 120` viewBox, transparent background,
+  exported to 512px PNG (same command as the logo).
+- **Fill** — a single gradient per icon, `light → mid → deep` along
+  `(0,0) → (120,120)` with `gradientUnits="userSpaceOnUse"` so the whole glyph
+  shares one diagonal prism sheen (unlike the logo's per-blade gradients).
+- **Negative space** — internal detail is transparent (knockout via `mask`),
+  the same light/dark-adaptive trick as the logo's centre square.
+- **Colour** — each product owns one row of `palettes` (deep stop kept light
+  enough to read on dark, lightness ≳ 35%).
+- **Weight** — glyphs are sized to similar visual mass (~88px of content,
+  ~16px margin) so the set looks even side by side.
+
+| Product | Meaning | Glyph | Palette |
+|:--|:--|:--|:--|
+| `pgconsole` | SQL GUI editor | editor window (title dots + content lines) | `aqua-cyan` |
+| `pgtui` | TUI SQL client | terminal prompt `>_` | `terminal-green` |
+| `pgschema` | declarative schema (Terraform-for-pg) | table / grid (header + 2×2 cells) | `holo-violet` |
+| `pgparser` | Postgres parser library | syntax tree / AST (root + 3 children) | `solar-amber` |
+
+Sources live in `public/icons/<product>.{svg,png}`. To add a product: pick or
+add a `palettes` row, draw a bold gradient glyph on the shared canvas, knock out
+detail with a `mask`, and export the PNG.
+
 ## Do's and Don'ts
 
 - **Do** keep all four blades the identical path rotated `0/90/180/270`.
@@ -155,7 +196,11 @@ as the favicon + apple-touch icon in `src/app/layout.tsx`.
 - **Do** keep the deep stop light enough to read on dark (lightness ≳ 35%).
 - **Do** re-export the 512px PNG after any colour change.
 - **Don't** fill, recolour, or resize the centre square.
-- **Don't** change geometry per product — only swap the three gradient stops.
+- **Don't** change the *umbrella mark's* geometry when retinting it — only swap
+  the three gradient stops. (Product icons are the exception: they are their own
+  glyphs by design — see [Product Icons](#product-icons).)
+- **Do**, for product icons, use one `userSpaceOnUse` gradient across the whole
+  glyph and keep margins/visual weight consistent across the set.
 - **Don't** flatten the gradient to a single colour; the per-blade gradient is
   what creates the prism/pinwheel depth.
 - **Don't** use a near-black deep stop (e.g. `#15123f`) — it vanishes on dark.
