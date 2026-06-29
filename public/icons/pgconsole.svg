@@ -3,11 +3,12 @@
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#8fb4ff"/><stop offset="0.5" stop-color="#2f63f0"/><stop offset="1" stop-color="#1e44c8"/>
     </linearGradient>
-    <!-- app window with transparent (knockout) title dots -->
-    <mask id="win">
-      <rect x="16" y="26" width="88" height="68" rx="12" fill="#fff"/>
-      <circle cx="29" cy="39" r="3.2" fill="#000"/><circle cx="40" cy="39" r="3.2" fill="#000"/><circle cx="51" cy="39" r="3.2" fill="#000"/>
+    <!-- shared pgplex diamond silhouette; glyph = window (knockout) -->
+    <mask id="m">
+      <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="#fff"/>
+      <rect x="42" y="47" width="36" height="7" rx="2.5" fill="#000"/>
+      <rect x="42" y="58" width="36" height="16" rx="2.5" fill="#000"/>
     </mask>
   </defs>
-  <rect x="16" y="26" width="88" height="68" rx="12" fill="url(#g)" mask="url(#win)"/>
+  <path d="M60 6 Q95 26 114 60 Q94 95 60 114 Q25 94 6 60 Q26 25 60 6 Z" fill="url(#g)" mask="url(#m)"/>
 </svg>
