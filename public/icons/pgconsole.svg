@@ -1,13 +1,16 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <!-- one gradient shared by every shard, as the pgplex blades share theirs -->
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#8fb4ff"/><stop offset="0.5" stop-color="#2f63f0"/><stop offset="1" stop-color="#1e44c8"/>
     </linearGradient>
-    <!-- window with a single header bar (knockout) -->
-    <mask id="win">
-      <rect x="16" y="24" width="88" height="72" rx="12" fill="#fff"/>
-      <rect x="16" y="43" width="88" height="4" fill="#000"/>
-    </mask>
   </defs>
-  <rect x="16" y="24" width="88" height="72" rx="12" fill="url(#g)" mask="url(#win)"/>
+  <!-- console window in triangle form: an equilateral triangle (sharp outer
+       border) split into three trapezoid shards with mitred seams, hollow
+       triangle centre = the screen. Same triangle base as pgparser/pgtui. -->
+  <g fill="url(#g)">
+    <path d="M60 21.1 L15 99 L38.1 83.7 L58.3 48.7 Z"/>
+    <path d="M15 99 L105 99 L80.2 86.7 L39.8 86.7 Z"/>
+    <path d="M105 99 L60 21.1 L61.7 48.7 L81.9 83.7 Z"/>
+  </g>
 </svg>
