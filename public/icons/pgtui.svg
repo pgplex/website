@@ -1,10 +1,15 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <!-- one gradient shared by both shards, as the pgplex blades share theirs -->
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#c0f7cf"/><stop offset="0.5" stop-color="#3ad673"/><stop offset="1" stop-color="#2fa85d"/>
     </linearGradient>
   </defs>
-  <!-- terminal prompt: chevron + cursor -->
-  <path d="M26 30 L64 60 L26 90 L26 73 L43 60 L26 47 Z" fill="url(#g)"/>
-  <rect x="60" y="80" width="34" height="10" rx="5" fill="url(#g)"/>
+  <!-- shell prompt chevron from three equal triangles: two solid arm shards
+       meeting at the tip, the middle one left hollow as the notch. Left edge
+       split into equal thirds so the hollow matches the two arms. -->
+  <g fill="url(#g)">
+    <path d="M92 60 L28 22 L28 47.3 Z"/>
+    <path d="M92 60 L28 72.7 L28 98 Z"/>
+  </g>
 </svg>
