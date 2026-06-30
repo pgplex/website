@@ -4,9 +4,11 @@
       <stop offset="0" stop-color="#ffb1a6"/><stop offset="0.5" stop-color="#f4473c"/><stop offset="1" stop-color="#cf2f2a"/>
     </linearGradient>
   </defs>
-  <!-- declarative schema: a 2x2 grid of cells -->
-  <rect x="26" y="26" width="30" height="30" rx="5" fill="url(#g)"/>
-  <rect x="64" y="26" width="30" height="30" rx="5" fill="url(#g)"/>
-  <rect x="26" y="64" width="30" height="30" rx="5" fill="url(#g)"/>
-  <rect x="64" y="64" width="30" height="30" rx="5" fill="url(#g)"/>
+  <!-- paired deltas: an up delta + a down delta = two schema states being
+       compared (before / after diff). Two opposing triangles, shared red
+       gradient, the gap between them as the negative space. -->
+  <g fill="url(#g)">
+    <path d="M37 39.2 L13 80.8 L61 80.8 Z"/>
+    <path d="M59 39.2 L107 39.2 L83 80.8 Z"/>
+  </g>
 </svg>
