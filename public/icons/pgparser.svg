@@ -1,12 +1,17 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <!-- one gradient shared by every shard, as the pgplex blades share theirs -->
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#ffe6b0"/><stop offset="0.5" stop-color="#ffb938"/><stop offset="1" stop-color="#e89327"/>
     </linearGradient>
   </defs>
-  <!-- parser: syntax tree / AST (root + two children) -->
-  <path d="M60 30 L36 86 M60 30 L84 86" stroke="url(#g)" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <circle cx="60" cy="30" r="12" fill="url(#g)"/>
-  <circle cx="36" cy="86" r="12" fill="url(#g)"/>
-  <circle cx="84" cy="86" r="12" fill="url(#g)"/>
+  <!-- equilateral triangle of three sub-triangles meeting at the edge
+       midpoints, leaving the centre triangle blank — the same hollow-centre
+       device as the pgplex icon's empty square.
+       apex (60,21.1), base (15,99)-(105,99): side 90, height 77.9. -->
+  <g fill="url(#g)">
+    <path d="M60 21.1 L37.5 60.05 L82.5 60.05 Z"/>
+    <path d="M15 99 L37.5 60.05 L60 99 Z"/>
+    <path d="M82.5 60.05 L105 99 L60 99 Z"/>
+  </g>
 </svg>
