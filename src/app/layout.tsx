@@ -14,7 +14,7 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: 'pgplex — Modern Developer Stack for PostgreSQL',
+  title: 'pgplex — Modern Toolchain for Postgres Developers',
   description:
     "We're building a modern Postgres toolchain for everyone — from individual developers to the enterprise.",
   icons: {

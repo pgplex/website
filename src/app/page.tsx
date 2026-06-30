@@ -74,7 +74,7 @@ export default function Page() {
           <Logo size={22} className="text-[15px]" />
           <div className="flex items-center gap-4">
             <span className="hidden text-xs text-ink-dim md:block">
-              Modern Developer Stack for PostgreSQL
+              Modern Toolchain for Postgres Developers
             </span>
             <a
               href="https://github.com/pgplex"
