@@ -61,7 +61,7 @@ const products: Product[] = [
 export default function Page() {
   return (
     <main className="flex h-dvh flex-col overflow-hidden bg-bg p-3 sm:p-4">
-      <div className="flex h-full min-h-0 flex-col border border-border bg-card shadow-[3px_3px_0_0_#b8b8b8,6px_6px_0_0_#d0d0d0,9px_9px_0_0_#e6e6e6]">
+      <div className="flex h-full min-h-0 flex-col border border-border bg-card">
         {/* menu bar */}
         <header className="flex h-14 shrink-0 items-center justify-between border-b border-border px-4 sm:px-5">
           <Logo size={30} className="text-xl" />
