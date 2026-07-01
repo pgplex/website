@@ -1,39 +1,24 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Two graphite tones is the minimum that keeps the impossible tribar
-         reading in 3D: the beams' up-facing "top" faces share the light
-         gradient (gT), every "side" face shares the dark one (gS). Each facet
-         carries a matching stroke so beams meet in solid tone edges rather than
-         the transparent gaps that used to read as white seams. -->
-    <linearGradient id="gT" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#7a7a7a"/><stop offset="1" stop-color="#4f4f4f"/>
+    <!-- pgplex mark: a tetrahedron ("plex") rotated so one vertex tips toward
+         the viewer and projects off-centre, giving three unequal faces. The
+         right (highlight) face is left open — outline only — while the left and
+         base faces are filled with two shades of one black. Filled faces are
+         stroked in their own fill colour so no seam shows; only the open face
+         carries a visible dark outline, drawn last so it reads on top. -->
+    <linearGradient id="gL" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#6d6d6d"/><stop offset="1" stop-color="#383838"/>
     </linearGradient>
-    <linearGradient id="gS" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#232323"/><stop offset="1" stop-color="#0a0a0a"/>
+    <linearGradient id="gD" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#2f2f2f"/><stop offset="1" stop-color="#0b0b0b"/>
     </linearGradient>
   </defs>
-  <!-- pgplex mark: an impossible tribar (Penrose triangle) = three beams
-       multiplexed into one figure ("plex"), its central negative space forming
-       a play triangle ("run"). Isometric projection with the far beam's end
-       landing on the near beam's start = the impossible weave. -->
-  <g stroke-linejoin="round">
-    <path d="M85.4 48.6 L24.2 84.0 L34.6 89.8 Z" fill="url(#gT)" stroke="url(#gT)" stroke-width="1.4"/>
-    <path d="M85.4 48.6 L34.6 89.8 L95.8 54.5 Z" fill="url(#gT)" stroke="url(#gT)" stroke-width="1.4"/>
-    <path d="M95.8 66.6 L34.6 102.1 L34.8 90.2 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M95.8 66.6 L34.8 90.2 L96.0 54.8 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M24.1 96.1 L32.7 101.7 L32.1 91.5 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M24.1 96.1 L32.1 91.5 L23.5 85.9 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M23.0 95.4 L33.2 101.5 L33.2 30.8 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M23.0 95.4 L33.2 30.8 L23.0 24.6 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M43.8 95.4 L33.6 101.5 L33.6 30.8 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M43.8 95.4 L33.6 30.8 L43.8 24.6 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M33.4 18.5 L24.3 23.1 L33.4 27.8 Z" fill="url(#gT)" stroke="url(#gT)" stroke-width="1.4"/>
-    <path d="M33.4 18.5 L33.4 27.8 L42.5 23.1 Z" fill="url(#gT)" stroke="url(#gT)" stroke-width="1.4"/>
-    <path d="M34.6 17.9 L24.2 23.7 L85.4 59.1 Z" fill="url(#gT)" stroke="url(#gT)" stroke-width="1.4"/>
-    <path d="M34.6 17.9 L85.4 59.1 L95.8 53.3 Z" fill="url(#gT)" stroke="url(#gT)" stroke-width="1.4"/>
-    <path d="M24.2 35.9 L85.4 71.4 L85.2 59.5 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M24.2 35.9 L85.2 59.5 L24.0 24.0 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M95.9 65.4 L87.3 71.0 L87.9 60.8 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
-    <path d="M95.9 65.4 L87.9 60.8 L96.4 55.2 Z" fill="url(#gS)" stroke="url(#gS)" stroke-width="1.4"/>
+  <g stroke-width="1.6" stroke-linejoin="round">
+    <!-- left face (filled, mid) — stroked in its own colour, so no seam -->
+    <path d="M62.0 20.1 L16.0 99.9 L68.0 72.0 Z" fill="url(#gL)" stroke="#4a4a4a"/>
+    <!-- base face (filled, deep) — stroked in its own colour -->
+    <path d="M16.0 99.9 L104.0 95.2 L68.0 72.0 Z" fill="url(#gD)" stroke="#1a1a1a"/>
+    <!-- right face (open — outline only), drawn last so it reads on top -->
+    <path d="M62.0 20.1 L104.0 95.2 L68.0 72.0 Z" fill="none" stroke="#1a1a1a"/>
   </g>
 </svg>
