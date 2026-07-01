@@ -4,11 +4,16 @@
       <stop offset="0" stop-color="#ffb1a6"/><stop offset="0.5" stop-color="#f4473c"/><stop offset="1" stop-color="#cf2f2a"/>
     </linearGradient>
   </defs>
-  <!-- paired deltas: an up delta + a down delta = two schema states being
-       compared (before / after diff). Two opposing triangles, shared red
-       gradient, the gap between them as the negative space. -->
+  <!-- paired deltas: an up delta (top-left) + a down delta (bottom-right) =
+       two schema states being compared (before / after diff). The two
+       equilateral triangles are 180-degree rotations of each other about the
+       centre, staggered diagonally so the silhouette is a centred square
+       (21..99 on both axes) whose height matches the sibling triangle icons
+       (pgparser/pgconsole are 21.1..99). The triangles are sized to fill that
+       frame, leaving only a slim diagonal channel between them as the
+       negative space. Shared red gradient. -->
   <g fill="url(#g)">
-    <path d="M37 39.2 L13 80.8 L61 80.8 Z"/>
-    <path d="M59 39.2 L107 39.2 L83 80.8 Z"/>
+    <path d="M41 21 L21 55.6 L61 55.6 Z"/>
+    <path d="M79 99 L99 64.4 L59 64.4 Z"/>
   </g>
 </svg>
