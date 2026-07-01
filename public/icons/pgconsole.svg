@@ -3,14 +3,13 @@
     <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0" stop-color="#8fb4ff"/><stop offset="0.5" stop-color="#2f63f0"/><stop offset="1" stop-color="#1e44c8"/>
     </linearGradient>
-    <!-- The pgplex logo, faceted: same four-blade pinwheel around an empty
-         square centre, but the blades' curved shutter edges are straightened
-         into angular triangle borders (matching the faceted language of
-         pgparser/pgtui/pgschema). One blade runs from a side of the central
-         square out along one full diamond edge (right corner -> top corner);
-         the four 90deg copies form the solid diamond and spin around the hollow
-         square. Diamond corners 21..99, square 50..70. -->
-    <path id="blade" d="M50 50 L70 50 L99 60 L60 21 Z"/>
+    <!-- pgplex pinwheel with pure-triangle blades: one blade is a right
+         triangle whose base is a full side of the central square, spun so its
+         free corner sweeps clockwise. The four 90deg copies form a windmill
+         of triangular sails around an empty square centre — same four-blade
+         pinwheel + hollow-square language as the pgplex logo, but every border
+         is a strict triangle. Sails reach 21..99, square 45..75. -->
+    <path id="blade" d="M45 45 L75 45 L75 21 Z"/>
   </defs>
   <g fill="url(#g)">
     <use href="#blade"/>
