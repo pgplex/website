@@ -8,7 +8,7 @@ export function Logo({ size = 24, className }: { size?: number; className?: stri
           the next/image runtime for a fixed-size icon. The SVG stays crisp at
           any size; logo.png is kept as the favicon raster. */}
       <img src="/logo.svg" alt="pgplex" width={size} height={size} />
-      <span>pgplex</span>
+      <span className="font-display">pgplex</span>
     </a>
   )
 }

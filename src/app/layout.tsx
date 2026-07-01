@@ -1,16 +1,27 @@
 import type { Metadata } from 'next'
-import { Geist_Mono, Instrument_Serif } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const geistMono = Geist_Mono({
-  subsets: ['latin'],
-  variable: '--font-geist-mono',
+// Secondary/workhorse mono — body text and everything with font-mono.
+const modernEraMono = localFont({
+  src: [
+    { path: './fonts/ModernEraMono-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/ModernEraMono-Medium.woff2', weight: '500', style: 'normal' },
+  ],
+  variable: '--font-modern-era-mono',
+  display: 'swap',
 })
 
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-instrument-serif',
+// Primary display face — used for headings via font-display.
+// Family: Regular/Medium/Semi-Bold, so weighted headings render real cuts.
+const protocol = localFont({
+  src: [
+    { path: './fonts/APK-Protocol-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/APK-Protocol-Medium.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/APK-Protocol-Semi-Bold.woff2', weight: '600', style: 'normal' },
+  ],
+  variable: '--font-protocol',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -30,7 +41,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistMono.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${modernEraMono.variable} ${protocol.variable}`}>
       <body>{children}</body>
     </html>
   )

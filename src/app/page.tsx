@@ -126,7 +126,7 @@ export default function Page() {
                 </span>
                 <span className="min-w-0">
                   <span
-                    className="block text-base font-semibold tracking-tight text-ink"
+                    className="block font-display text-base font-semibold tracking-tight text-ink"
                     style={selected ? { color: prod.color } : undefined}
                   >
                     {prod.name}
@@ -159,7 +159,7 @@ export default function Page() {
                   {p.tagline}
                 </div>
                 <h1
-                  className="font-mono text-2xl font-bold tracking-tight sm:text-3xl"
+                  className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
                   style={{ color: p.color }}
                 >
                   {p.name}

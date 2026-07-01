@@ -2,9 +2,9 @@
 
 @theme {
   /* Fonts — variables injected by next/font in layout.tsx */
-  --font-mono: var(--font-geist-mono), 'SF Mono', 'Fira Code', 'JetBrains Mono',
+  --font-mono: var(--font-modern-era-mono), 'SF Mono', 'Fira Code', 'JetBrains Mono',
     Menlo, Consolas, 'Liberation Mono', monospace;
-  --font-display: var(--font-instrument-serif), serif;
+  --font-display: var(--font-protocol), ui-sans-serif, system-ui, sans-serif;
 
   /* Palette (ported from the original pgplex design tokens) */
   --color-bg: #fafafa;
