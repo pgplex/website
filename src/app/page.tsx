@@ -1,7 +1,3 @@
-'use client'
-
-import { useState } from 'react'
-
 import { Logo } from '@/components/logo'
 
 type Product = {
@@ -63,15 +59,12 @@ const products: Product[] = [
 ]
 
 export default function Page() {
-  const [active, setActive] = useState(0)
-  const p = products[active]
-
   return (
     <main className="flex h-dvh flex-col overflow-hidden bg-bg p-3 sm:p-4">
       <div className="flex h-full min-h-0 flex-col border border-border bg-card shadow-[6px_6px_0_var(--color-border)]">
         {/* menu bar */}
         <header className="flex h-14 shrink-0 items-center justify-between border-b border-border px-4 sm:px-5">
-          <Logo size={22} className="text-[15px]" />
+          <Logo size={30} className="text-xl" />
           <div className="flex items-center gap-4">
             <span className="hidden text-xs text-ink-dim md:block">
               Modern Toolchain for Postgres Developers
@@ -90,112 +83,70 @@ export default function Page() {
           </div>
         </header>
 
-        {/* product boxes — the hero. Pick one to reveal its content below. */}
-        <div className="grid shrink-0 grid-cols-2 border-b border-border md:grid-cols-4">
+        {/* four large product tiles filling the whole area */}
+        <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2">
           {products.map((prod, i) => {
-            const selected = i === active
+            const borderR = i % 2 === 0
+            const borderB = i < 2
             return (
-              <button
+              <a
                 key={prod.key}
-                type="button"
-                onClick={() => setActive(i)}
-                aria-pressed={selected}
-                className={`group relative flex flex-col gap-3 border-border p-4 text-left transition-colors max-md:[&:nth-child(odd)]:border-r md:border-r md:last:border-r-0 max-md:[&:nth-child(-n+2)]:border-b sm:p-5 ${
-                  selected ? '' : 'hover:bg-bg'
-                }`}
-                style={selected ? { backgroundColor: `${prod.color}12` } : undefined}
+                href={prod.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`group relative flex min-h-0 flex-col justify-between overflow-hidden p-6 sm:p-10 ${
+                  borderR ? 'border-r border-border' : ''
+                } ${borderB ? 'border-b border-border' : ''}`}
               >
+                {/* brand-tint wash on hover */}
                 <span
-                  className="absolute inset-x-0 top-0 h-[3px] transition-opacity"
-                  style={{ backgroundColor: prod.color, opacity: selected ? 1 : 0 }}
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                  style={{ backgroundColor: `${prod.color}0d` }}
                 />
-                <span className="flex items-center justify-between">
+                {/* top accent bar on hover */}
+                <span
+                  className="pointer-events-none absolute inset-x-0 top-0 h-[3px] scale-x-0 transition-transform duration-200 group-hover:scale-x-100"
+                  style={{ backgroundColor: prod.color }}
+                />
+
+                {/* top row: icon + index */}
+                <div className="relative flex items-start justify-between">
                   <img
                     src={`/icons/${prod.key}.svg`}
                     alt=""
-                    width={40}
-                    height={40}
-                    className="shrink-0"
+                    className="h-auto w-20 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 sm:w-28"
                   />
-                  <span
-                    className="font-mono text-xs tabular-nums text-ink-dim transition-opacity"
-                    style={{ opacity: selected ? 1 : 0.45 }}
-                  >
+                  <span className="font-mono text-sm font-medium tabular-nums text-ink-dim sm:text-base">
                     0{i + 1}
                   </span>
-                </span>
-                <span className="min-w-0">
-                  <span
-                    className="block font-display text-base font-semibold tracking-tight text-ink"
-                    style={selected ? { color: prod.color } : undefined}
+                </div>
+
+                {/* bottom: name + tagline + cta */}
+                <div className="relative min-w-0">
+                  <h2
+                    className="font-display text-3xl font-semibold tracking-tight text-ink transition-colors sm:text-5xl"
+                    style={{ ['--c' as string]: prod.color }}
                   >
-                    {prod.name}
+                    <span className="transition-colors group-hover:[color:var(--c)]">{prod.name}</span>
+                  </h2>
+                  <p className="mt-2 truncate text-sm text-ink-dim sm:text-base">{prod.tagline}</p>
+                  <span
+                    className="mt-3 inline-flex translate-y-1 items-center gap-1.5 text-sm font-medium opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 sm:text-base"
+                    style={{ color: prod.color }}
+                  >
+                    {prod.cta}
+                    <span aria-hidden="true">→</span>
                   </span>
-                  <span className="block truncate text-xs text-ink-dim">{prod.tagline}</span>
-                </span>
-              </button>
+                </div>
+              </a>
             )
           })}
         </div>
 
-        {/* content for the selected product */}
-        <section className="flex min-h-0 flex-1 flex-col justify-center overflow-hidden">
-          <div className="flex min-h-0 flex-1 flex-col items-stretch md:flex-row">
-            {/* mark */}
-            <div
-              className="flex shrink-0 items-center justify-center border-border p-6 max-md:border-b md:w-[34%] md:max-w-[380px] md:border-r"
-              style={{ backgroundColor: `${p.color}0d` }}
-            >
-              <img
-                src={`/icons/${p.key}.svg`}
-                alt={p.name}
-                className="h-auto w-20 max-w-[40%] md:w-36"
-              />
-            </div>
-            {/* copy */}
-            <div className="flex min-h-0 flex-1 flex-col justify-center gap-4 p-6 sm:gap-5 sm:p-10">
-              <div>
-                <div className="mb-1.5 text-[11px] uppercase tracking-[0.18em] text-ink-dim">
-                  {p.tagline}
-                </div>
-                <h1
-                  className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
-                  style={{ color: p.color }}
-                >
-                  {p.name}
-                </h1>
-              </div>
-              <p className="max-w-[56ch] text-sm leading-[1.7] text-ink-dim sm:text-[15px]">
-                {p.description}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {p.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="border border-border-bright px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.08em] text-ink-dim"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex w-fit items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white shadow-[3px_3px_0_var(--color-border)] transition-transform duration-150 hover:-translate-y-px hover:translate-x-px"
-                style={{ backgroundColor: p.color }}
-              >
-                {p.cta}
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* footer */}
-        <footer className="flex h-10 shrink-0 items-center justify-between border-t border-border px-4 text-xs text-ink-dim sm:px-5">
-          <span className="flex items-center gap-1.5">
-            by
+        <footer className="flex h-10 shrink-0 items-center justify-end border-t border-border px-4 text-xs text-ink-dim sm:px-5">
+          <span>
+            &copy; 2026{' '}
             <a
               href="https://www.bytebase.com"
               target="_blank"
@@ -205,7 +156,6 @@ export default function Page() {
               Bytebase
             </a>
           </span>
-          <span>&copy; 2026 pgplex</span>
         </footer>
       </div>
     </main>
