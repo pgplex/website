@@ -52,7 +52,7 @@ const products: Product[] = [
   {
     key: 'pgparser',
     name: 'pgparser',
-    tagline: 'Native Golang Postgres parser',
+    tagline: 'Golang-native Postgres parser',
     description:
       'Thread-safe, Golang-native Postgres parser. Parse, analyze, and transform SQL with zero CGo dependencies.',
     tags: ['Go', 'Parser', 'Library'],
