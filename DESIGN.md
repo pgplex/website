@@ -1,209 +1,254 @@
 ---
-name: pgplex Logo System
+version: alpha
+name: pgplex
+description: >
+  Dark, developer-focused design system for the pgplex site — a grayscale
+  triangle brand mark over a near-black surface, four product accent colors
+  used sparingly, mono body type, and a neon conic backlight as the single
+  decorative flourish.
 colors:
-  # Active brand mark — "Quantum Indigo". These three stops are the ONLY
-  # values that change when generating a sibling product logo.
-  logo-light: "#bcc8ff"
-  logo-mid: "#6a70ff"
-  logo-deep: "#5b54ec"
-  # Page surfaces the mark must sit on (must read on both).
-  surface-light: "#fafafa"
-  surface-dark: "#0a0d14"
-logo:
-  viewBox: "0 0 120 120"
-  size: 120
-  center: [60, 60]
-  # The empty centre square, as [x0, y0, x1, y1]. Stays transparent.
-  square: [46, 46, 74, 74]
-  # One blade. Drawn once, then rotated by each angle below.
-  blade-path: "M46 46 L74 46 C84 50 100 58 114 60 Q95 26 60 6 C58 20 50 36 46 46 Z"
-  rotations: [0, 90, 180, 270]
-  # 90deg rotation about centre used to derive the cut edges: f(x,y) = (120 - y, x)
-  rotation-fn: "(x, y) => [120 - y, x]"
-  gradient:
-    type: linear
-    direction: "(0,0) -> (1,1)"   # objectBoundingBox, so each blade shades on its own
-    stops:
-      - { offset: 0,   color: "{colors.logo-light}" }
-      - { offset: 0.5, color: "{colors.logo-mid}" }
-      - { offset: 1,   color: "{colors.logo-deep}" }
-  export:
-    raster: 512                    # favicon / apple-touch PNG size
-    background: transparent
-# Curated base palettes for the product family. mid = vivid base; light = pale
-# tint; deep = darker shade with enough lightness to survive a dark background.
+  bg: "#08090b"
+  card: "#0e1013"
+  border: "#1e2127"
+  border-bright: "#2d323a"
+  ink: "#e9eaec"
+  ink-dim: "#878d97"
+  accent: "#29b3dd"
+  brand:
+    gray-hi: "#ededed"
+    gray-mid: "#a3a3a3"
+    gray-lo: "#636363"
+    silver-hi: "#f7f7f7"
+    silver-lo: "#b0b4b9"
+  product:
+    pgconsole: "#2f63f0"
+    pgschema: "#df372d"
+    pgtui: "#2fa85d"
+    pgparser: "#d98324"
+# Icon gradient triads: light tint / vivid base / dark-safe deep shade.
 palettes:
-  quantum-indigo: { light: "#bcc8ff", mid: "#6a70ff", deep: "#5b54ec" }   # pgplex (umbrella)
   cobalt-blue:    { light: "#8fb4ff", mid: "#2f63f0", deep: "#1e44c8" }   # pgconsole
-  terminal-green: { light: "#c0f7cf", mid: "#3ad673", deep: "#2fa85d" }   # pgtui
   signal-red:     { light: "#ffb1a6", mid: "#f4473c", deep: "#cf2f2a" }   # pgschema
+  terminal-green: { light: "#c0f7cf", mid: "#3ad673", deep: "#2fa85d" }   # pgtui
   solar-amber:    { light: "#ffe6b0", mid: "#ffb938", deep: "#e89327" }   # pgparser
-# Product icons are function-specific glyphs (NOT the pinwheel) drawn in the
-# shared gradient style: one userSpaceOnUse gradient (0,0)->(120,120) over a
-# 120x120 canvas, transparent background, transparent negative space.
-product-icons:
-  pgconsole: { glyph: "window (header bar)", palette: "{palettes.cobalt-blue}", files: ["public/icons/pgconsole.svg", "public/icons/pgconsole.png"] }
-  pgtui:     { glyph: "terminal prompt >_", palette: "{palettes.terminal-green}", files: ["public/icons/pgtui.svg", "public/icons/pgtui.png"] }
-  pgschema:  { glyph: "2x2 grid", palette: "{palettes.signal-red}",          files: ["public/icons/pgschema.svg", "public/icons/pgschema.png"] }
-  pgparser:  { glyph: "syntax tree (root + 2)", palette: "{palettes.solar-amber}", files: ["public/icons/pgparser.svg", "public/icons/pgparser.png"] }
+  umbrella-gray:  { light: "{colors.brand.gray-hi}", mid: "{colors.brand.gray-mid}", deep: "{colors.brand.gray-lo}" }   # pgplex
+typography:
+  display:
+    fontFamily: APK Protocol
+    fontWeight: 600
+    letterSpacing: -0.025em
+  display-md:
+    fontFamily: APK Protocol
+    fontWeight: 500
+    letterSpacing: -0.025em
+  body:
+    fontFamily: Modern Era Mono
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.6
+  label-caps:
+    fontFamily: Modern Era Mono
+    fontSize: 0.625rem
+    fontWeight: 500
+    letterSpacing: 0.08em
+  wordmark:
+    fontFamily: Space Grotesk
+    fontWeight: 600
+    letterSpacing: -0.025em
+rounded:
+  none: 0px
+  pill: 9999px
+spacing:
+  frame: 12px
+  frame-sm: 16px
+  tile: 24px
+  tile-sm: 40px
+  container: 1080px
 components:
-  logo:
-    format: svg
-    fill: "gradient (see logo.gradient)"
-    centre: transparent
-    files: ["public/logo.svg", "public/logo.png"]
+  tile:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    padding: "{spacing.tile}"
+  star-badge:
+    backgroundColor: transparent
+    textColor: "{colors.ink-dim}"
+    rounded: "{rounded.pill}"
+    padding: 6px 14px
+  tag-chip:
+    backgroundColor: transparent
+    textColor: "{colors.ink-dim}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.none}"
+    padding: 2px 8px
 ---
 
-# pgplex Logo System
-
-Reusable spec for the pgplex brand mark and the sibling product icons. Tokens
-give exact geometry and colour; the prose explains the invariants. There are two
-tiers:
-
-1. **`pgplex` umbrella mark** — the aperture/pinwheel. A new tint of *this* mark
-   is **a colour swap, not a redraw** (change the three gradient stops only).
-2. **Product icons** (pgconsole, pgtui, pgschema, pgparser) — **function-specific
-   glyphs**, each its own shape. They are tied into one set by a **shared
-   colour/shade treatment** (the same `light → mid → deep` gradient ramp), *not*
-   by a shared silhouette. See [Product Icons](#product-icons).
+# pgplex Design System
 
 ## Overview
 
-The mark is an **aperture / pinwheel**: a rounded diamond built from four
-identical curved blades that spiral around a perfectly empty centre square. It
-reads two ways at once — a *prism* (faceted, gradient depth) and a *plex*
-(interwoven, multiplexed blades). The centre is a knockout (transparent), so the
-same asset works on light and dark surfaces.
+pgplex is Bytebase's umbrella brand for a family of four Postgres developer
+tools (pgconsole, pgschema, pgtui, pgparser). The visual language is a dark,
+terminal-adjacent aesthetic: one near-black surface, thin hairline borders,
+monospace body text, and color reserved for the four product identities. The
+umbrella brand itself is strictly grayscale so the colored product marks read
+as its children.
 
-To make a new product logo: copy `public/logo.svg`, change only the three
-`colors.logo-*` stops (pick a row from `palettes`), re-export the PNG. Never
-touch the geometry.
+Two ideas anchor everything:
+
+1. **Triangles only.** Every mark in the system — the pgplex logo and all four
+   product icons — is composed purely of triangles, with negative space doing
+   the storytelling (a hollow center, an ✕, a prompt-chevron notch).
+2. **One gradient per mark.** Each mark uses a single 3-stop gradient of one
+   hue (`light → mid → deep`) running along the `0,0 → 120,120` diagonal of
+   its viewBox, `gradientUnits="userSpaceOnUse"`. No second color, no strokes,
+   no effects.
 
 ## Colors
 
-Each mark is a single 3-stop linear gradient applied per blade
-(`light → mid → deep`, corner-to-corner):
+- `bg` (#08090b) is the page; `card` (#0e1013) is every raised surface. The
+  step between them is intentionally tiny — separation comes from `border`
+  (#1e2127) hairlines, not surface contrast. `border-bright` (#2d323a) marks
+  the outer frame and hover emphasis.
+- `ink` / `ink-dim` are the only text colors. `accent` (#29b3dd) is reserved
+  for interactive hover states on links (e.g. the Bytebase credit).
+- The four `product` colors are identity colors, used only on that product's
+  tile: hover tint wash at ~5% opacity (`{color}0d`), a 3px top accent bar,
+  the CTA text, and the product name on hover. They never color body text or
+  shared chrome.
+- `palettes.*` are the icon gradient triads; the `mid` stop is at or near the
+  product identity color.
+- `brand.gray-*` is the pgplex mark's gradient; `brand.silver-*` the
+  wordmark's. The umbrella brand never uses a chromatic color.
 
-- **light** `{colors.logo-light}` — pale tint, the lit edge / highlight.
-- **mid** `{colors.logo-mid}` — the vivid base hue; this *is* the product colour.
-- **deep** `{colors.logo-deep}` — darker shade for the 3D fold / shadow.
+**Deriving a new palette from a base hue**
 
-**Deriving a palette from a base hue**
-
-1. `mid` = the saturated base colour (HSL lightness ≈ 55–65%).
+1. `mid` = the saturated base color (HSL lightness ≈ 55–65%).
 2. `light` = same hue, lightness ≈ 80–88% (mix ~35% toward white).
-3. `deep` = same hue, lightness ≈ **35–45%** — darker than mid but **never
-   near-black**. A deep stop below ~30% lightness disappears on the dark surface
-   (the original `#15123f` looked black on `{colors.surface-dark}`).
+3. `deep` = same hue, lightness ≈ 35–45% — darker than mid but **never
+   near-black**; a deep stop below ~30% lightness disappears on `bg`.
 
-Curated, dark-safe families live in `palettes` in the front matter.
+### Neon backlight
+
+The single decorative element is a conic blend of the four product colors
+glowing around the page frame, rotated so each color lands on its product's
+corner of the 2×2 grid:
+
+```css
+conic-gradient(from 45deg at 50% 50%, #df372d, #d98324, #2fa85d, #2f63f0, #df372d)
+```
+
+It renders as two absolutely-positioned layers behind the framed card, inset
+by `spacing.frame`: a wide bloom (`blur(60px)`) and a tight tube
+(`blur(14px)`).
+
+## Typography
+
+- **Display — APK Protocol** (400/500/600, local woff2): headings, product
+  names, the header tagline. Always tracking −0.025em. Product tile names are
+  600; the header tagline is 500.
+- **Body — Modern Era Mono** (400/500, local woff2): everything else —
+  descriptions, badges, footer. Line-height 1.6. The mono texture is the
+  "developer tool" voice of the site.
+- **Wordmark — Space Grotesk 600**: exists only as outlined paths inside
+  `public/wordmark.svg` and `public/logo-full.svg`. No wordmark webfont is
+  loaded at runtime; never re-typeset "pgplex" as live text.
+
+## Layout
+
+- The homepage is a single full-viewport composition: a `frame` inset (12px,
+  16px ≥sm) around a bordered card containing a header bar, a 2×2 product
+  grid, and a slim footer bar. Content pages use a `container` of 1080px.
+- Grid cells separate with single hairline borders (right border on the left
+  column, bottom border on the top row) — no gaps, no double borders.
+- Tiles pad with `tile` (24px, 40px ≥sm) and split content vertically:
+  icon + star badge on top, name / tagline / CTA pinned to the bottom.
+
+## Elevation & Depth
+
+There are no soft drop shadows. Depth comes from:
+
+- hairline borders on a slightly lighter surface,
+- the neon backlight glowing through the frame gap,
+- hover motion (200ms): brand-tint wash fades in, top accent bar scales in
+  (`scale-x-0 → 1`), icon lifts 2px, CTA rises 4px while fading in.
+
+Legacy pattern (`src/components/product-card.tsx`): hard offset shadow
+`4px 4px 0 {colors.border}` growing to `6px 6px 0 {colors.border-bright}` on
+hover — reuse this style if reintroducing card grids; never use blurred
+box-shadows.
 
 ## Shapes
 
-All geometry is in a `120 × 120` viewBox centred at `(60, 60)`.
-
-**Construction**
-
-- One blade (`logo.blade-path`) is drawn once and instantiated four times at
-  `logo.rotations` (`0/90/180/270`) about the centre. All four blades are the
-  *exact same path* — this is non-negotiable.
-- The blade boundary, in order, is:
-  1. `M46 46 L74 46` — **straight inner edge = the top side of the centre
-     square** (the source of the clean square hole).
-  2. `C84 50 100 58 114 60` — outward "cut" edge, square corner → diamond corner.
-  3. `Q95 26 60 6` — the convex outer diamond edge.
-  4. `C58 20 50 36 46 46` — inner "cut" edge, diamond corner → square corner.
-- **The seam invariant:** the two cut edges (steps 2 and 4) are exact 90°
-  rotations of one another under `f(x,y) = (120 - y, x)`
-  (e.g. `f(46,46)=(74,46)`, `f(58,20)=(100,58)`, `f(50,36)=(84,50)`). Because of
-  this, each blade's cut edge coincides with its neighbour's cut edge — the four
-  blades tile with **no gaps and no overlaps**, and the remaining hole is a
-  mathematically exact square.
-- The empty square is `logo.square` = `(46,46)–(74,74)`, i.e. `28 × 28` (~23% of
-  the canvas). It is left transparent, never filled.
-
-If you ever retune the swirl, move the control points of edge 4, then regenerate
-edge 2 with `f(...)` so the seam invariant holds.
+- Corners are square everywhere. The only rounded element is the star-count
+  badge, a full pill.
+- All brand geometry is triangular, drawn in a `0 0 120 120` viewBox with the
+  silhouette inside the 21..99 band (78 units), so all marks carry equal
+  visual weight side by side.
 
 ## Components
 
-The complete source mark (`public/logo.svg`) — swap the three `<stop>` colours
-to rebrand:
+### Logo & lockup
 
-```svg
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="pgplexBlade" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0"   stop-color="#bcc8ff"/>
-      <stop offset="0.5" stop-color="#6a70ff"/>
-      <stop offset="1"   stop-color="#5b54ec"/>
-    </linearGradient>
-    <path id="pgplexBladePath" d="M46 46 L74 46 C84 50 100 58 114 60 Q95 26 60 6 C58 20 50 36 46 46 Z"/>
-  </defs>
-  <use href="#pgplexBladePath" fill="url(#pgplexBlade)"/>
-  <use href="#pgplexBladePath" fill="url(#pgplexBlade)" transform="rotate(90 60 60)"/>
-  <use href="#pgplexBladePath" fill="url(#pgplexBlade)" transform="rotate(180 60 60)"/>
-  <use href="#pgplexBladePath" fill="url(#pgplexBlade)" transform="rotate(270 60 60)"/>
-</svg>
-```
+- `public/logo.svg` — the mark: four grayscale triangles converging on a
+  hollow center — four products multiplexed into one hub; the negative space
+  between the shards forms the ✕ of "plex". Each shard is a quadrant triangle
+  of the square shrunk about its own incenter, so all three edges retreat
+  equally and the diagonal channels are a uniform 8 units. Gradient:
+  `umbrella-gray` on the standard diagonal.
+- `public/wordmark.svg` — "pgplex" as Space Grotesk 600 outlines
+  (HarfBuzz-shaped, tracking −0.025em), filled with a **vertical**
+  `silver-hi → silver-lo` gradient — vertical so every letter shades the same
+  and none goes dark.
+- `public/logo-full.svg` — the lockup with alignment baked in: at font-size
+  80 (in 120-unit icon space) the word's ascender-to-descender band spans
+  24..96, centered on the mark's 21..99 silhouette with the x-height midline
+  on the mark's center; the word's ink starts 32 units right of the mark's
+  edge. Always use this asset for mark + name; never rebuild the lockup in
+  CSS or nudge it with transforms.
+- `public/logo.png` (512px) is the favicon raster of the mark. Regenerate
+  after any change: `rsvg-convert -w 512 -h 512 public/logo.svg -o
+  public/logo.png`.
 
-**Exporting the raster** (favicon / apple-touch, `public/logo.png`): the SVG is
-the source of truth; the PNG is generated from it at `logo.export.raster` (512)
-with a transparent background. With macOS `qlmanage`:
+### Product icons
 
-```sh
-sed 's/width="120" height="120"/width="512" height="512"/' logo.svg > _exp.svg
-qlmanage -t -s 512 -o . _exp.svg && mv _exp.svg.png logo.png && rm _exp.svg
-```
+Recipe for a new product icon: `0 0 120 120` viewBox, triangles only,
+silhouette within 21..99, one `linearGradient` (`userSpaceOnUse`, `0,0 →
+120,120`) with the product's `light / mid / deep` triad, transparent
+background, and a negative-space device that encodes the product's function:
 
-`logo.svg` is consumed directly by `src/components/logo.tsx` (nav) and referenced
-as the favicon + apple-touch icon in `src/app/layout.tsx`.
-
-## Product Icons
-
-The product tools do **not** reuse the pinwheel or any shared background shape —
-each is a function-specific glyph so it's recognisable on its own. What makes the
-set read as a family is the **shared colour/shade treatment**: every icon is the
-same `light → mid → deep` gradient ramp, just in a different hue. Cohesion comes
-from the shading, not the silhouette.
-
-- **Canvas & export** — same `120 × 120` viewBox, transparent background,
-  exported to 512px PNG (same command as the logo).
-- **Fill** — a single gradient per icon, `light → mid → deep` along
-  `(0,0) → (120,120)` with `gradientUnits="userSpaceOnUse"` so the whole glyph
-  shares one diagonal prism sheen (unlike the logo's per-blade gradients).
-- **Negative space** — internal detail is transparent (knockout via `mask`),
-  the same light/dark-adaptive trick as the logo's centre square.
-- **Colour** — each product owns one row of `palettes` (deep stop kept light
-  enough to read on dark, lightness ≳ 35%).
-- **Weight** — glyphs are sized to similar visual mass (~88px of content,
-  ~16px margin) so the set looks even side by side.
-
-| Product | Meaning | Glyph | Palette |
+| Product | Meaning | Triangle device | Palette |
 |:--|:--|:--|:--|
-| `pgconsole` | SQL GUI editor | window (header bar) | `cobalt-blue` |
-| `pgtui` | TUI SQL client | terminal prompt `>_` | `terminal-green` |
-| `pgschema` | declarative schema (Terraform-for-pg) | 2×2 grid | `signal-red` |
-| `pgparser` | Postgres parser library | syntax tree (root + 2 children) | `solar-amber` |
+| `pgconsole` | web SQL editor | pinwheel of 4 right-triangle sails, hollow square center | `cobalt-blue` |
+| `pgschema` | declarative schema migration | paired up/down deltas = before/after diff | `signal-red` |
+| `pgtui` | terminal Postgres client | prompt chevron of 3 shards, middle one hollow | `terminal-green` |
+| `pgparser` | Go Postgres parser | tri-force of 3 sub-triangles, hollow center | `solar-amber` |
 
-Sources live in `public/icons/<product>.{svg,png}`. To add a product: pick or
-add a `palettes` row, draw a bold gradient glyph on the shared canvas, knock out
-detail with a `mask`, and export the PNG.
+Sources live in `public/icons/<product>.svg`. To add a product: derive a
+palette row, design a triangle-only glyph with a meaningful knockout, keep the
+silhouette in the 21..99 band.
+
+### Product tile
+
+Card in the 2×2 grid: `card` surface, hairline dividers, `tile` padding; the
+whole tile is a stretched link. Hover reveals the product color (tint wash,
+accent bar, name color, CTA reveal). Star badge: pill, `border` hairline,
+GitHub octicon + tabular-nums count, brightens to `ink` on hover.
 
 ## Do's and Don'ts
 
-- **Do** keep all four blades the identical path rotated `0/90/180/270`.
-- **Do** preserve the seam invariant (cut edges are 90° rotations under
-  `f(x,y)=(120-y,x)`) so the centre stays an exact square.
-- **Do** keep the centre square transparent — it must adapt to light and dark.
-- **Do** keep the deep stop light enough to read on dark (lightness ≳ 35%).
-- **Do** re-export the 512px PNG after any colour change.
-- **Don't** fill, recolour, or resize the centre square.
-- **Don't** change the *umbrella mark's* geometry when retinting it — only swap
-  the three gradient stops. (Product icons are the exception: they are their own
-  glyphs by design — see [Product Icons](#product-icons).)
-- **Do**, for product icons, use one `userSpaceOnUse` gradient across the whole
-  glyph and keep margins/visual weight consistent across the set.
-- **Don't** flatten the gradient to a single colour; the per-blade gradient is
-  what creates the prism/pinwheel depth.
-- **Don't** use a near-black deep stop (e.g. `#15123f`) — it vanishes on dark.
+- **Do** keep the umbrella brand grayscale; only product surfaces get color.
+- **Do** build any new mark from pure triangles with one 3-stop diagonal
+  gradient, and put the meaning in the negative space.
+- **Do** keep the deep gradient stop light enough to read on dark
+  (lightness ≳ 35%).
+- **Do** keep text gradients light and vertical (`silver-hi → silver-lo`);
+  text must never fall below mid-gray on the dark background.
+- **Don't** load a webfont for the wordmark or typeset "pgplex" as styled
+  text — use the SVG assets.
+- **Don't** round corners (except the pill badge) or add blurred drop
+  shadows.
+- **Don't** use product colors for chrome, body text, or other products'
+  surfaces; the neon backlight is the only place all four blend.
+- **Don't** re-align or re-space the logo lockup with CSS — alignment lives
+  in `logo-full.svg`.
