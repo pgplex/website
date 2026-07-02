@@ -16,10 +16,10 @@ const products: Product[] = [
   {
     key: 'pgconsole',
     name: 'pgconsole',
-    tagline: 'Minimal Postgres editor for humans and agents',
+    tagline: 'Minimal Postgres editor and MCP server with guardrails',
     description:
-      'Web-based Postgres development workspace with guardrails. Query, explore, and manage your databases safely from the browser.',
-    tags: ['Web UI', 'SQL Editor', 'Access Control'],
+      'Web-based Postgres development workspace with guardrails. Query, explore, and manage your databases from the browser — or let agents do it through the built-in MCP server, under the same guardrails.',
+    tags: ['Web UI', 'SQL Editor', 'MCP Server', 'Access Control'],
     href: 'https://github.com/pgplex/pgconsole',
     repo: 'pgplex/pgconsole',
     cta: 'View on GitHub',
@@ -113,7 +113,7 @@ export default async function Page() {
         <header className="flex h-20 shrink-0 items-center justify-between border-b border-border px-4 sm:h-24 sm:px-6">
           <Logo size={38} className="text-2xl" />
           <span className="hidden font-display text-lg font-medium tracking-tight text-ink md:block lg:text-2xl">
-            Modern Developer Toolchain for Postgres
+            The Postgres Toolchain for Humans and Agents
           </span>
         </header>
 
