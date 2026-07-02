@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 
+// The "pgplex" wordmark ships as outlined paths inside public/logo-full.svg
+// and public/wordmark.svg (Space Grotesk 600), so no wordmark webfont is
+// loaded here.
+
 // Secondary/workhorse mono — body text and everything with font-mono.
 const modernEraMono = localFont({
   src: [
@@ -41,7 +45,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${modernEraMono.variable} ${protocol.variable}`}>
+    <html
+      lang="en"
+      className={`${modernEraMono.variable} ${protocol.variable}`}
+    >
       <body>{children}</body>
     </html>
   )

@@ -1,25 +1,22 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- pgplex mark: a tetrahedron ("plex") rotated so one vertex tips toward
-         the viewer and projects off-centre, giving three unequal faces. The
-         right (highlight) face is left open — outline only — while the left and
-         base faces are filled with two shades of one light grey (tuned for a
-         dark UI). Filled faces are stroked in their own fill colour so no seam
-         shows; only the open face carries a visible light outline, drawn last
-         so it reads on top. -->
-    <linearGradient id="gL" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#eaeaea"/><stop offset="1" stop-color="#b6b6b6"/>
-    </linearGradient>
-    <linearGradient id="gD" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#9a9a9a"/><stop offset="1" stop-color="#5e5e5e"/>
+    <!-- one grayscale gradient shared by all four shards, same diagonal and
+         stop structure as the product icons (tuned for a dark UI) -->
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#ededed"/><stop offset="0.5" stop-color="#a3a3a3"/><stop offset="1" stop-color="#636363"/>
     </linearGradient>
   </defs>
-  <g stroke-width="1.6" stroke-linejoin="round">
-    <!-- left face (filled, mid) — stroked in its own colour, so no seam -->
-    <path d="M62.0 20.1 L16.0 99.9 L68.0 72.0 Z" fill="url(#gL)" stroke="#cfcfcf"/>
-    <!-- base face (filled, deep) — stroked in its own colour -->
-    <path d="M16.0 99.9 L104.0 95.2 L68.0 72.0 Z" fill="url(#gD)" stroke="#7a7a7a"/>
-    <!-- right face (open — outline only), drawn last so it reads on top -->
-    <path d="M62.0 20.1 L104.0 95.2 L68.0 72.0 Z" fill="none" stroke="#e6e6e6"/>
+  <!-- pgplex multiplexer: four triangles — one per product — converging on a
+       hollow centre, many channels muxed into one hub. Each shard is the full
+       quadrant triangle of the square shrunk about its incentre, so all three
+       edges retreat equally: the diagonal gaps between neighbours are a
+       uniform 8 units and the negative space reads as an ✕ (the x in plex)
+       meeting at an empty centre diamond — the same hollow-centre language as
+       the product icons. Silhouette 21..99 to match the siblings. -->
+  <g fill="url(#g)">
+    <path d="M26.66 21 L93.34 21 L60 54.34 Z"/>
+    <path d="M99 26.66 L99 93.34 L65.66 60 Z"/>
+    <path d="M93.34 99 L26.66 99 L60 65.66 Z"/>
+    <path d="M21 93.34 L21 26.66 L54.34 60 Z"/>
   </g>
 </svg>

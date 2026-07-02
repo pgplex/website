@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>pgplex wordmark options</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Chakra+Petch:wght@500;600&family=IBM+Plex+Sans:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Sora:wght@500;600;700&family=Outfit:wght@500;600;700&family=Archivo:wght@500;600;700&family=Manrope:wght@600;700;800&display=block" rel="stylesheet">
+<style>
+  /* house fonts, loaded straight from the repo */
+  @font-face { font-family: 'APK Protocol'; src: url('../src/app/fonts/APK-Protocol-Semi-Bold.woff2') format('woff2'); font-weight: 600; }
+  @font-face { font-family: 'APK Protocol'; src: url('../src/app/fonts/APK-Protocol-Medium.woff2') format('woff2'); font-weight: 500; }
+  @font-face { font-family: 'Modern Era Mono'; src: url('../src/app/fonts/ModernEraMono-Medium.woff2') format('woff2'); font-weight: 500; }
+
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #08090b; color: #e9eaec;
+    font: 14px/1.6 'SF Mono', Menlo, Consolas, monospace;
+    padding-bottom: 80px;
+  }
+  .page { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---- live nav mock: shows the currently selected combo ---- */
+  .navmock {
+    position: sticky; top: 0; z-index: 10;
+    background: #0b0d10; border-bottom: 1px solid #1e2127;
+  }
+  .navmock .inner {
+    max-width: 1080px; margin: 0 auto; padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .navmock img { width: 24px; height: 24px; }
+  .lockup { display: flex; align-items: center; gap: 10px; }
+  .navmock .word { font-size: 19px; }
+  .navmock .hint { color: #59606a; font-size: 12px; }
+
+  .word {
+    font-weight: 600; letter-spacing: -0.01em; line-height: 1;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  h2 { font-size: 13px; font-weight: 500; color: #878d97; text-transform: uppercase; letter-spacing: 0.1em; margin: 44px 0 16px; }
+
+  /* ---- gradient swatches ---- */
+  .grads { display: flex; flex-wrap: wrap; gap: 10px; }
+  .grads button {
+    display: flex; align-items: center; gap: 10px;
+    background: #0e1013; border: 1px solid #1e2127; color: #878d97;
+    font: 12px/1 inherit; padding: 10px 14px; cursor: pointer;
+  }
+  .grads button .chip { width: 44px; height: 16px; border: 1px solid #2d323a; }
+  .grads button.on { border-color: #29b3dd; color: #e9eaec; }
+
+  /* ---- font rows ---- */
+  .row {
+    display: flex; align-items: center; gap: 24px;
+    padding: 20px 16px; margin: 0 -16px; cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .row:hover { background: #0e1013; }
+  .row.on { border-color: #29b3dd; background: #0e1013; }
+  .row .label { width: 210px; flex-shrink: 0; font-size: 12px; color: #878d97; }
+  .row .label b { display: block; color: #e9eaec; font-weight: 500; font-size: 13px; }
+  .row .hero { display: flex; align-items: center; gap: 18px; flex: 1; }
+  .row .hero img { width: 52px; height: 52px; }
+  .row .hero .word { font-size: 48px; }
+  .row .navsize { display: flex; align-items: center; gap: 9px; width: 170px; flex-shrink: 0; }
+  .row .navsize img { width: 22px; height: 22px; }
+  .row .navsize .word { font-size: 17px; }
+</style>
+</head>
+<body>
+
+<div class="navmock">
+  <div class="inner">
+    <span class="lockup">
+      <img src="../public/logo.svg" alt="">
+      <span class="word" id="mock">pgplex</span>
+    </span>
+    <span class="hint" id="hint">click a gradient + a font row — this nav updates live</span>
+  </div>
+</div>
+
+<div class="page">
+  <h2>1 · Gradient</h2>
+  <div class="grads" id="grads"></div>
+
+  <h2>2 · Font</h2>
+  <div id="rows"></div>
+</div>
+
+<script>
+  const GRADIENTS = [
+    { name: 'A · solid ink (no gradient)', css: 'linear-gradient(#e9eaec, #e9eaec)' },
+    { name: 'B · barely-there', css: 'linear-gradient(135deg, #f2f3f4 0%, #c9cdd2 100%)' },
+    { name: 'C · silver, vertical', css: 'linear-gradient(180deg, #f7f7f7 0%, #b0b4b9 100%)' },
+    { name: 'D · brighter tail', css: 'linear-gradient(135deg, #f2f2f2 0%, #d0d0d0 55%, #a8a8a8 100%)' },
+    { name: 'E · mark gradient (current)', css: 'linear-gradient(135deg, #ededed 0%, #a3a3a3 50%, #636363 100%)' },
+  ];
+  const FONTS = [
+    { name: 'Space Grotesk', detail: '600 · previous wordmark', family: "'Space Grotesk'", weight: 600 },
+    { name: 'IBM Plex Sans', detail: '600 · the plex pun', family: "'IBM Plex Sans'", weight: 600 },
+    { name: 'IBM Plex Mono', detail: '600', family: "'IBM Plex Mono'", weight: 600 },
+    { name: 'Sora', detail: '600', family: "'Sora'", weight: 600 },
+    { name: 'Outfit', detail: '600', family: "'Outfit'", weight: 600 },
+    { name: 'Manrope', detail: '700', family: "'Manrope'", weight: 700 },
+    { name: 'Archivo', detail: '600', family: "'Archivo'", weight: 600 },
+    { name: 'APK Protocol', detail: '600 · house display font', family: "'APK Protocol'", weight: 600 },
+    { name: 'Modern Era Mono', detail: '500 · house mono font', family: "'Modern Era Mono'", weight: 500 },
+    { name: 'Chakra Petch', detail: '600 · current wordmark', family: "'Chakra Petch'", weight: 600 },
+  ];
+
+  let grad = GRADIENTS[2], font = FONTS[0];
+
+  const gradsEl = document.getElementById('grads');
+  GRADIENTS.forEach((g) => {
+    const b = document.createElement('button');
+    b.innerHTML = `<span class="chip" style="background:${g.css}"></span>${g.name}`;
+    b.onclick = () => { grad = g; render(); };
+    g.btn = b;
+    gradsEl.appendChild(b);
+  });
+
+  const rowsEl = document.getElementById('rows');
+  FONTS.forEach((f) => {
+    const r = document.createElement('div');
+    r.className = 'row';
+    r.innerHTML = `
+      <span class="label"><b>${f.name}</b>${f.detail}</span>
+      <span class="hero"><img src="../public/logo.svg" alt=""><span class="word">pgplex</span></span>
+      <span class="navsize"><img src="../public/logo.svg" alt=""><span class="word">pgplex</span></span>`;
+    r.onclick = () => { font = f; render(); };
+    f.row = r;
+    rowsEl.appendChild(r);
+  });
+
+  function render() {
+    GRADIENTS.forEach((g) => g.btn.classList.toggle('on', g === grad));
+    FONTS.forEach((f) => {
+      f.row.classList.toggle('on', f === font);
+      f.row.querySelectorAll('.word').forEach((w) => {
+        w.style.fontFamily = f.family;
+        w.style.fontWeight = f.weight;
+        w.style.backgroundImage = grad.css;
+      });
+    });
+    const mock = document.getElementById('mock');
+    mock.style.fontFamily = font.family;
+    mock.style.fontWeight = font.weight;
+    mock.style.backgroundImage = grad.css;
+    document.getElementById('hint').textContent = `${font.name} ${font.weight} + gradient ${grad.name.split(' ·')[0]}`;
+  }
+  render();
+</script>
+</body>
+</html>
