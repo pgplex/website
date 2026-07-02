@@ -3,22 +3,23 @@
     <!-- pgplex mark: a tetrahedron ("plex") rotated so one vertex tips toward
          the viewer and projects off-centre, giving three unequal faces. The
          right (highlight) face is left open — outline only — while the left and
-         base faces are filled with two shades of one black. Filled faces are
-         stroked in their own fill colour so no seam shows; only the open face
-         carries a visible dark outline, drawn last so it reads on top. -->
+         base faces are filled with two shades of one light grey (tuned for a
+         dark UI). Filled faces are stroked in their own fill colour so no seam
+         shows; only the open face carries a visible light outline, drawn last
+         so it reads on top. -->
     <linearGradient id="gL" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#6d6d6d"/><stop offset="1" stop-color="#383838"/>
+      <stop offset="0" stop-color="#eaeaea"/><stop offset="1" stop-color="#b6b6b6"/>
     </linearGradient>
     <linearGradient id="gD" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#2f2f2f"/><stop offset="1" stop-color="#0b0b0b"/>
+      <stop offset="0" stop-color="#9a9a9a"/><stop offset="1" stop-color="#5e5e5e"/>
     </linearGradient>
   </defs>
   <g stroke-width="1.6" stroke-linejoin="round">
     <!-- left face (filled, mid) — stroked in its own colour, so no seam -->
-    <path d="M62.0 20.1 L16.0 99.9 L68.0 72.0 Z" fill="url(#gL)" stroke="#4a4a4a"/>
+    <path d="M62.0 20.1 L16.0 99.9 L68.0 72.0 Z" fill="url(#gL)" stroke="#cfcfcf"/>
     <!-- base face (filled, deep) — stroked in its own colour -->
-    <path d="M16.0 99.9 L104.0 95.2 L68.0 72.0 Z" fill="url(#gD)" stroke="#1a1a1a"/>
+    <path d="M16.0 99.9 L104.0 95.2 L68.0 72.0 Z" fill="url(#gD)" stroke="#7a7a7a"/>
     <!-- right face (open — outline only), drawn last so it reads on top -->
-    <path d="M62.0 20.1 L104.0 95.2 L68.0 72.0 Z" fill="none" stroke="#1a1a1a"/>
+    <path d="M62.0 20.1 L104.0 95.2 L68.0 72.0 Z" fill="none" stroke="#e6e6e6"/>
   </g>
 </svg>

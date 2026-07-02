@@ -25,7 +25,7 @@ const protocol = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'pgplex — Modern Toolchain for Postgres Developers',
+  title: 'pgplex — Modern Developer Toolchain for Postgres',
   description:
     "We're building a modern Postgres toolchain for everyone — from individual developers to the enterprise.",
   icons: {

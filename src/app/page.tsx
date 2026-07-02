@@ -84,16 +84,36 @@ function formatStars(n: number): string {
   return String(n)
 }
 
+// Conic blend of the four brand colours, rotated so each lands on its card's
+// corner: red (pgschema) top-right, orange (pgparser) bottom-right, green
+// (pgtui) bottom-left, blue (pgconsole) top-left; red repeats to close the loop.
+const NEON_GRADIENT =
+  'conic-gradient(from 45deg at 50% 50%, #df372d, #d98324, #2fa85d, #2f63f0, #df372d)'
+
 export default async function Page() {
   const stars = await Promise.all(products.map((p) => getStars(p.repo)))
   return (
-    <main className="flex h-dvh flex-col overflow-hidden bg-bg p-3 sm:p-4">
-      <div className="flex h-full min-h-0 flex-col border border-border bg-card">
+    <main className="relative flex h-dvh flex-col overflow-hidden bg-bg p-3 sm:p-4">
+      {/* Neon backlight: each card's brand colour anchored to its corner of the
+          2×2 grid (TL blue, TR red, BR orange, BL green), blended around the
+          frame. Two blurred layers behind the frame — a wide bloom and a
+          tighter colour "tube" — read as neon through the gap around the edge. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-3 blur-[60px] sm:inset-4"
+        style={{ background: NEON_GRADIENT }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-3 blur-[14px] sm:inset-4"
+        style={{ background: NEON_GRADIENT }}
+      />
+      <div className="relative flex h-full min-h-0 flex-col border border-border-bright bg-card">
         {/* menu bar */}
-        <header className="flex h-14 shrink-0 items-center justify-between border-b border-border px-4 sm:px-5">
-          <Logo size={30} className="text-xl" />
-          <span className="hidden text-xs text-ink-dim md:block">
-            Modern Toolchain for Postgres Developers
+        <header className="flex h-20 shrink-0 items-center justify-between border-b border-border px-4 sm:h-24 sm:px-6">
+          <Logo size={38} className="text-2xl" />
+          <span className="hidden font-display text-lg font-medium tracking-tight text-ink md:block lg:text-2xl">
+            Modern Developer Toolchain for Postgres
           </span>
         </header>
 
@@ -144,11 +164,11 @@ export default async function Page() {
                     aria-label={`${prod.name} on GitHub${
                       starCount !== null ? `, ${starCount} stars` : ''
                     }`}
-                    className="pointer-events-auto relative z-10 inline-flex items-center gap-1.5 rounded-full border border-border px-2.5 py-1 text-xs font-medium tabular-nums text-ink-dim transition-colors hover:border-ink-dim hover:text-ink"
+                    className="pointer-events-auto relative z-10 inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-1.5 text-sm font-medium tabular-nums text-ink-dim transition-colors hover:border-ink-dim hover:text-ink sm:px-4 sm:py-2 sm:text-base"
                   >
                     <svg
-                      width="14"
-                      height="14"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                       aria-hidden="true"
