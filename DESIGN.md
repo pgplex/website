@@ -151,8 +151,8 @@ by `spacing.frame`: a wide bloom (`blur(60px)`) and a tight tube
   descriptions, badges, footer. Line-height 1.6. The mono texture is the
   "developer tool" voice of the site.
 - **Wordmark — Space Grotesk 600**: exists only as outlined paths inside
-  `public/wordmark.svg` and `public/logo-full.svg`. No wordmark webfont is
-  loaded at runtime; never re-typeset "pgplex" as live text.
+  `public/wordmark-dark.svg` and `public/logo-full-dark.svg`. No wordmark
+  webfont is loaded at runtime; never re-typeset "pgplex" as live text.
 
 ## Layout
 
@@ -190,25 +190,32 @@ box-shadows.
 
 ### Logo & lockup
 
-- `public/logo.svg` — the mark: four grayscale triangles converging on a
-  hollow center — four products multiplexed into one hub; the negative space
-  between the shards forms the ✕ of "plex". Each shard is a quadrant triangle
-  of the square shrunk about its own incenter, so all three edges retreat
-  equally and the diagonal channels are a uniform 8 units. Gradient:
-  `umbrella-gray` on the standard diagonal.
-- `public/wordmark.svg` — "pgplex" as Space Grotesk 600 outlines
-  (HarfBuzz-shaped, tracking −0.025em), filled with a **vertical**
-  `silver-hi → silver-lo` gradient — vertical so every letter shades the same
-  and none goes dark.
-- `public/logo-full.svg` — the lockup with alignment baked in: at font-size
-  80 (in 120-unit icon space) the word's ascender-to-descender band spans
-  24..96, centered on the mark's 21..99 silhouette with the x-height midline
-  on the mark's center; the word's ink starts 32 units right of the mark's
-  edge. Always use this asset for mark + name; never rebuild the lockup in
-  CSS or nudge it with transforms.
-- `public/logo.png` (512px) is the favicon raster of the mark. Regenerate
-  after any change: `rsvg-convert -w 512 -h 512 public/logo.svg -o
-  public/logo.png`.
+Every logo asset ships as a **dark/light pair** with matching names: the
+`*-dark.svg` set uses the light silver/gray ramps tuned for the near-black site
+surface, and the `*-light.svg` set swaps in dark graphite→black / near-black
+ramps for white and light backgrounds. Use the dark set on the site; reach for
+the light set only on light surfaces.
+
+- `public/logo-dark.svg` / `public/logo-light.svg` — the mark: four grayscale
+  triangles converging on a hollow center — four products multiplexed into one
+  hub; the negative space between the shards forms the ✕ of "plex". Each shard
+  is a quadrant triangle of the square shrunk about its own incenter, so all
+  three edges retreat equally and the diagonal channels are a uniform 8 units.
+  Dark uses `umbrella-gray` on the standard diagonal; light uses
+  `#5c5c5c → #333 → #0d0d0d`.
+- `public/wordmark-dark.svg` / `public/wordmark-light.svg` — "pgplex" as Space
+  Grotesk 600 outlines (HarfBuzz-shaped, tracking −0.025em), filled with a
+  **vertical** gradient (dark: `silver-hi → silver-lo`; light:
+  `#2b2e34 → #0e1013`) — vertical so every letter shades the same.
+- `public/logo-full-dark.svg` / `public/logo-full-light.svg` — the lockup with
+  alignment baked in: at font-size 80 (in 120-unit icon space) the word's
+  ascender-to-descender band spans 24..96, centered on the mark's 21..99
+  silhouette with the x-height midline on the mark's center; the word's ink
+  starts 32 units right of the mark's edge. Always use this asset for mark +
+  name; never rebuild the lockup in CSS or nudge it with transforms.
+- `public/logo-dark.png` / `public/logo-light.png` (512px) are the mark
+  rasters (dark is the site favicon). Regenerate after any change, e.g.
+  `rsvg-convert -w 512 -h 512 public/logo-dark.svg -o public/logo-dark.png`.
 
 ### Product icons
 
@@ -251,4 +258,4 @@ GitHub octicon + tabular-nums count, brightens to `ink` on hover.
 - **Don't** use product colors for chrome, body text, or other products'
   surfaces; the neon backlight is the only place all four blend.
 - **Don't** re-align or re-space the logo lockup with CSS — alignment lives
-  in `logo-full.svg`.
+  in `logo-full-{dark,light}.svg`.

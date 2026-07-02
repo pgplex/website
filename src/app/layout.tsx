@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 
-// The "pgplex" wordmark ships as outlined paths inside public/logo-full.svg
-// and public/wordmark.svg (Space Grotesk 600), so no wordmark webfont is
-// loaded here.
+// The "pgplex" wordmark ships as outlined paths inside public/logo-full-dark.svg
+// and public/wordmark-dark.svg (Space Grotesk 600), so no wordmark webfont is
+// loaded here. Light-background variants: public/*-light.svg.
 
 // Secondary/workhorse mono — body text and everything with font-mono.
 const modernEraMono = localFont({
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     "We're building the Postgres toolchain for humans and agents — SQL editing, declarative schema migration, a terminal client, and a native Go parser.",
   icons: {
     icon: [
-      { url: '/logo.svg', type: 'image/svg+xml' },
-      { url: '/logo.png', type: 'image/png' },
+      { url: '/logo-dark.svg', type: 'image/svg+xml' },
+      { url: '/logo-dark.png', type: 'image/png' },
     ],
-    apple: '/logo.png',
+    apple: '/logo-dark.png',
   },
 }
 

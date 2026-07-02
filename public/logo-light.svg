@@ -1,0 +1,16 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light-background variant of logo.svg: same four-shard multiplexer mark,
+       but a dark graphite->black diagonal ramp so it reads on white / light
+       surfaces (the standard logo.svg uses a light-gray ramp tuned for dark). -->
+  <defs>
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#5c5c5c"/><stop offset="0.5" stop-color="#333333"/><stop offset="1" stop-color="#0d0d0d"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#g)">
+    <path d="M26.66 21 L93.34 21 L60 54.34 Z"/>
+    <path d="M99 26.66 L99 93.34 L65.66 60 Z"/>
+    <path d="M93.34 99 L26.66 99 L60 65.66 Z"/>
+    <path d="M21 93.34 L21 26.66 L54.34 60 Z"/>
+  </g>
+</svg>

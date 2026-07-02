@@ -1,0 +1,100 @@
+<svg width="1280" height="460" viewBox="0 0 1280 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- pgschema product banner (1280x460): a hero spotlighting pgschema under the pgplex
+       umbrella lockup, with the other three products kept present in a
+       right-hand rail in their own identity colours. Template shared with
+       banner-pgconsole.svg; hero product + neon hue + rail set swapped. -->
+  <defs>
+    <style>
+      .name { font-family: 'Modern Era Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-weight: 700; }
+      .tag  { font-family: 'Modern Era Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-weight: 400; }
+      .hdr  { font-family: 'APK Protocol', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 600; }
+      .caps { font-family: 'Modern Era Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-weight: 500; letter-spacing: 1.4px; }
+      .foot { font-family: 'Modern Era Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-weight: 400; }
+    </style>
+    <linearGradient id="neon" x1="0" y1="0" x2="1280" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#cf2f2a"/><stop offset="0.5" stop-color="#ff5f54"/><stop offset="1" stop-color="#cf2f2a"/>
+    </linearGradient>
+    <filter id="bloom" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="55"/></filter>
+    <filter id="tube"  x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter>
+    <linearGradient id="gMark" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#ededed"/><stop offset="0.5" stop-color="#a3a3a3"/><stop offset="1" stop-color="#636363"/>
+    </linearGradient>
+    <linearGradient id="gWord" gradientUnits="userSpaceOnUse" x1="0" y1="24" x2="0" y2="96">
+      <stop offset="0" stop-color="#f7f7f7"/><stop offset="1" stop-color="#b0b4b9"/>
+    </linearGradient>
+    <linearGradient id="gC" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#8fb4ff"/><stop offset="0.5" stop-color="#2f63f0"/><stop offset="1" stop-color="#1e44c8"/>
+    </linearGradient>
+    <linearGradient id="gS" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#ffb1a6"/><stop offset="0.5" stop-color="#f4473c"/><stop offset="1" stop-color="#cf2f2a"/>
+    </linearGradient>
+    <linearGradient id="gT" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#c0f7cf"/><stop offset="0.5" stop-color="#3ad673"/><stop offset="1" stop-color="#2fa85d"/>
+    </linearGradient>
+    <linearGradient id="gP" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0" stop-color="#ffe6b0"/><stop offset="0.5" stop-color="#ffb938"/><stop offset="1" stop-color="#e89327"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="460" fill="#08090b"/>
+  <rect x="6"  y="6"  width="1268" height="448" fill="url(#neon)" filter="url(#bloom)" opacity="0.5"/>
+  <rect x="14" y="14" width="1252" height="432" fill="url(#neon)" filter="url(#tube)"  opacity="0.6"/>
+  <rect x="20" y="20" width="1240" height="420" fill="#0e1013" stroke="#2d323a" stroke-width="1"/>
+
+  <g transform="translate(48,43) scale(0.43333)">
+    <g fill="url(#gMark)">
+      <path d="M26.66 21 L93.34 21 L60 54.34 Z"/>
+      <path d="M99 26.66 L99 93.34 L65.66 60 Z"/>
+      <path d="M93.34 99 L26.66 99 L60 65.66 Z"/>
+      <path d="M21 93.34 L21 26.66 L54.34 60 Z"/>
+    </g>
+    <path fill="url(#gWord)" d="M130.99 96.00V40.48H140.03V45.68H141.39Q142.75 43.20 145.75 41.28Q148.75 39.36 154.35 39.36Q159.15 39.36 163.27 41.72Q167.39 44.08 169.87 48.64Q172.35 53.20 172.35 59.60V60.88Q172.35 67.28 169.87 71.84Q167.39 76.40 163.31 78.76Q159.23 81.12 154.35 81.12Q150.59 81.12 148.07 80.24Q145.55 79.36 143.99 77.92Q142.43 76.48 141.55 75.04H140.19V96.00ZM151.63 73.12Q156.67 73.12 159.91 69.88Q163.15 66.64 163.15 60.64V59.84Q163.15 53.76 159.87 50.56Q156.59 47.36 151.63 47.36Q146.67 47.36 143.35 50.56Q140.03 53.76 140.03 59.84V60.64Q140.03 66.64 143.35 69.88Q146.67 73.12 151.63 73.12Z M178.19 60.40V59.20Q178.19 52.96 180.67 48.52Q183.15 44.08 187.31 41.72Q191.47 39.36 196.43 39.36Q202.03 39.36 204.95 41.36Q207.87 43.36 209.23 45.68H210.59V40.48H219.55V87.52Q219.55 91.44 217.31 93.72Q215.07 96.00 211.23 96.00H184.67V88.00H208.11Q210.43 88.00 210.43 85.60V74.16H209.07Q208.19 75.52 206.67 76.92Q205.15 78.32 202.67 79.28Q200.19 80.24 196.43 80.24Q191.47 80.24 187.31 77.88Q183.15 75.52 180.67 71.08Q178.19 66.64 178.19 60.40ZM198.99 72.16Q203.95 72.16 207.23 69.00Q210.51 65.84 210.51 60.16V59.36Q210.51 53.60 207.27 50.48Q204.03 47.36 198.99 47.36Q194.03 47.36 190.71 50.48Q187.39 53.60 187.39 59.36V60.16Q187.39 65.84 190.71 69.00Q194.03 72.16 198.99 72.16Z M229.23 96.00V40.48H238.27V45.68H239.63Q240.99 43.20 243.99 41.28Q246.99 39.36 252.59 39.36Q257.39 39.36 261.51 41.72Q265.63 44.08 268.11 48.64Q270.59 53.20 270.59 59.60V60.88Q270.59 67.28 268.11 71.84Q265.63 76.40 261.55 78.76Q257.47 81.12 252.59 81.12Q248.83 81.12 246.31 80.24Q243.79 79.36 242.23 77.92Q240.67 76.48 239.79 75.04H238.43V96.00ZM249.87 73.12Q254.91 73.12 258.15 69.88Q261.39 66.64 261.39 60.64V59.84Q261.39 53.76 258.11 50.56Q254.83 47.36 249.87 47.36Q244.91 47.36 241.59 50.56Q238.27 53.76 238.27 59.84V60.64Q238.27 66.64 241.59 69.88Q244.91 73.12 249.87 73.12Z M278.35 80.00V24.00H287.55V80.00Z M315.31 81.12Q309.39 81.12 304.87 78.60Q300.35 76.08 297.83 71.48Q295.31 66.88 295.31 60.72V59.76Q295.31 53.52 297.79 48.96Q300.27 44.40 304.75 41.88Q309.23 39.36 315.07 39.36Q320.83 39.36 325.15 41.88Q329.47 44.40 331.87 48.96Q334.27 53.52 334.27 59.60V62.88H304.59Q304.75 67.52 307.87 70.32Q310.99 73.12 315.55 73.12Q320.03 73.12 322.19 71.16Q324.35 69.20 325.47 66.72L333.07 70.64Q331.95 72.80 329.83 75.24Q327.71 77.68 324.19 79.40Q320.67 81.12 315.31 81.12ZM304.67 55.92H324.91Q324.59 52.00 321.91 49.68Q319.23 47.36 314.99 47.36Q310.59 47.36 307.95 49.68Q305.31 52.00 304.67 55.92Z M335.71 80.00 350.43 60.08 335.95 40.48H346.67L356.35 54.16H357.71L367.39 40.48H378.03L363.55 60.08L378.27 80.00H367.47L357.71 66.08H356.35L346.59 80.00Z"/>
+  </g>
+  <text class="hdr" x="1236" y="76" text-anchor="end" font-size="20" letter-spacing="-0.5" fill="#e9eaec">The Postgres Toolchain for Humans and Agents</text>
+  <line x1="20" y1="118" x2="1260" y2="118" stroke="#1e2127" stroke-width="1"/>
+
+  <rect x="20" y="118" width="880" height="282" fill="#df372d" opacity="0.05"/>
+  <rect x="20" y="118" width="880" height="3" fill="#df372d"/>
+
+  <g transform="translate(56,152) scale(1.0667)" fill="url(#gS)">
+    <path d="M41 21 L21 55.6 L61 55.6 Z"/>
+    <path d="M79 99 L99 64.4 L59 64.4 Z"/>
+  </g>
+
+  <text class="name" x="212" y="204" font-size="46" fill="#e9eaec">pgschema</text>
+  <text class="tag"  x="214" y="238" font-size="16" fill="#aeb4bd">Terraform-style, declarative schema migration</text>
+  <text class="tag"  x="214" y="272" font-size="14" fill="#7f858e">Schema management for Postgres, the Terraform way &#8212; declare the</text>
+  <text class="tag"  x="214" y="292" font-size="14" fill="#7f858e">state you want, then plan, diff, and apply with confidence.</text>
+  <text class="caps" x="214" y="330" font-size="10.5" fill="#878d97">PLAN &#160;&#183;&#160; DIFF &#160;&#183;&#160; APPLY</text>
+  <text class="tag"  x="214" y="366" font-size="15" fill="#df372d">github.com/pgplex/pgschema &#8594;</text>
+
+  <line x1="900" y1="118" x2="900" y2="400" stroke="#1e2127" stroke-width="1"/>
+  <text class="caps" x="932" y="150" font-size="10.5" fill="#6f757e">ALSO IN THE TOOLCHAIN</text>
+
+  <g transform="translate(940,182) scale(0.36667)" fill="url(#gC)">
+    <path d="M45 45 L75 45 L75 21 Z"/>
+    <path d="M45 45 L75 45 L75 21 Z" transform="rotate(90 60 60)"/>
+    <path d="M45 45 L75 45 L75 21 Z" transform="rotate(180 60 60)"/>
+    <path d="M45 45 L75 45 L75 21 Z" transform="rotate(270 60 60)"/>
+  </g>
+  <text class="name" x="998" y="206" font-size="21" fill="#e9eaec">pgconsole</text>
+  <text class="tag"  x="998" y="226" font-size="12.5" fill="#878d97">Web SQL editor &amp; MCP server</text>
+
+  <g transform="translate(940,258) scale(0.36667)" fill="url(#gT)">
+    <path d="M92 60 L28 22 L28 47.3 Z"/>
+    <path d="M92 60 L28 72.7 L28 98 Z"/>
+  </g>
+  <text class="name" x="998" y="282" font-size="21" fill="#e9eaec">pgtui</text>
+  <text class="tag"  x="998" y="302" font-size="12.5" fill="#878d97">Terminal UI Postgres client</text>
+
+  <g transform="translate(940,334) scale(0.36667)" fill="url(#gP)">
+    <path d="M60 21.1 L37.5 60.05 L82.5 60.05 Z"/>
+    <path d="M15 99 L37.5 60.05 L60 99 Z"/>
+    <path d="M82.5 60.05 L105 99 L60 99 Z"/>
+  </g>
+  <text class="name" x="998" y="358" font-size="21" fill="#e9eaec">pgparser</text>
+  <text class="tag"  x="998" y="378" font-size="12.5" fill="#878d97">Golang-native Postgres parser</text>
+
+  <line x1="20" y1="400" x2="1260" y2="400" stroke="#1e2127" stroke-width="1"/>
+  <text class="foot" x="1236" y="424" text-anchor="end" font-size="13" fill="#878d97">Apache 2.0 &#183; github.com/pgplex/pgschema</text>
+</svg>
