@@ -235,6 +235,26 @@ Sources live in `public/icons/<product>.svg`. To add a product: derive a
 palette row, design a triangle-only glyph with a meaningful knockout, keep the
 silhouette in the 21..99 band.
 
+### Product wordmarks & lockups
+
+Each product has a single wordmark and lockup (no dark/light split — one
+version reads on any surface), in `public/icons/`:
+
+- `<product>-wordmark.svg` — the product name as **APK Protocol 600** outlines
+  (tracking −0.025em, no runtime webfont — the umbrella wordmark is Space
+  Grotesk, so products use the display face to stay distinct), tinted in the
+  product hue.
+- `<product>-full.svg` (+ 2× transparent `.png`) — icon + wordmark, icon
+  spanning 21..99 with the word's ink box centred on the mark centre and
+  starting a fixed gap right of the mark edge (same alignment idea as
+  `logo-full`).
+
+The icon keeps its diagonal `light→mid→deep` gradient; the wordmark is a
+**vertical `mid→deep`** ramp of the same hue (top→bottom), the darker half of
+the icon transition so it stays legible on both dark and light. Regenerate all
+four products from the font with the outlining script (fonttools reads the
+woff2 in `src/app/fonts/`); never re-typeset a wordmark as live text.
+
 ### Product tile
 
 Card in the 2×2 grid: `card` surface, hairline dividers, `tile` padding; the
