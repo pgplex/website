@@ -204,7 +204,7 @@ export default async function Page() {
         {/* footer */}
         <footer className="flex h-10 shrink-0 items-center justify-end border-t border-border px-4 text-xs text-ink-dim sm:px-5">
           <span>
-            &copy; 2026{' '}
+            Apache 2.0 &middot; &copy; 2026{' '}
             <a
               href="https://www.bytebase.com"
               target="_blank"
